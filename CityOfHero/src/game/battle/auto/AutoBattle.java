@@ -26,10 +26,8 @@ import org.slf4j.LoggerFactory;
 public class AutoBattle extends BattleBase {
 
 	private static final Logger 		logger = LoggerFactory.getLogger( AutoBattle.class );
-	private static final IBattleUtil	util = MobileAutoBattleUtil.getInstance();
+	private static final IBattleUtil	util = AutoBattleUtil.getInstance();
 
-	private static final int 			SKILL_ATTACK_NEED_SP = 1000;
-	public static final int 			SP_TO_ADD = 50;		
 	private static final int 			MAX_ROUND = 50;//最大回合数
 
 	/**
@@ -86,9 +84,9 @@ public class AutoBattle extends BattleBase {
 	 */
 	private IFormation getFormation( FighterBase fighter, boolean isFriend ){
 		if( isFriend ){
-			return fighter.isLeft() ?  attackers : defenders;
+			return fighter.isBottom() ?  attackers : defenders;
 		}
-		return fighter.isLeft() ? defenders : attackers;
+		return fighter.isBottom() ? defenders : attackers;
 	}
 	
 	@Override
@@ -115,7 +113,7 @@ public class AutoBattle extends BattleBase {
 				//考虑混乱的状态
 				currentDefenders = getFormation( currentAttacker, currentAttacker.isChaos() );
 				
-				if( currentAttacker.getSp() >= SKILL_ATTACK_NEED_SP ){
+				if( currentAttacker.CanSkill() ){
 					if( doSkillAttacks( currentAttacker, currentDefenders  ) ){
 						isEnd = true;
 						break;
@@ -220,19 +218,19 @@ public class AutoBattle extends BattleBase {
 			return true;
 		}
 
-		if( info.isHit() ){//未命中，不存在反击，这个逻辑可根据实际情况进行修改
-			attacker.setSp( attacker.getSp() + SP_TO_ADD );
-			
-			if( !defender.isDie() ){
-				if( info.getDamage() > 1 ){//防止不死之身之类的技能长久不结束
-					defender.setSp( defender.getSp() + SP_TO_ADD );
-				}
-			
-				if( info.isBlock() ){
-					return doBlockAndCounterAttack( defender, attacker );
-				}
-			}
-		}
+//		if( info.isHit() ){//未命中，不存在反击，这个逻辑可根据实际情况进行修改
+//			attacker.setSp( attacker.getSp() + SP_TO_ADD );
+//			
+//			if( !defender.isDie() ){
+//				if( info.getDamage() > 1 ){//防止不死之身之类的技能长久不结束
+//					defender.setSp( defender.getSp() + SP_TO_ADD );
+//				}
+//			
+//				if( info.isBlock() ){
+//					return doBlockAndCounterAttack( defender, attacker );
+//				}
+//			}
+//		}
 		return false;
 	}
 

@@ -1,9 +1,5 @@
 package game.fighter.cfg;
 
-import game.battle.skill.SkillTemplet;
-import game.battle.skill.cfg.SkillTempletCfg;
-import game.fighter.NpcFighter;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +17,7 @@ import org.jdom2.input.SAXBuilder;
  *
  */
 public class NpcFighterTempletCfg {
-	private static final Map<Short,NpcFighter> npcFighters = new HashMap<Short, NpcFighter>();
+	private static final Map<Short,NpcFighterTemplet> npcFighterTemplets = new HashMap<Short, NpcFighterTemplet>();
 	
 	/**
 	 * 此配置表必须先于MissionTempletCfg初始化，因此无需提前手动调用
@@ -46,34 +42,10 @@ public class NpcFighterTempletCfg {
 			List<?> fighterList= root.getChildren( "fight" ); 
 			
 			for( int i = 0; i < fighterList.size(); i++ ){
-				NpcFighter npc = new NpcFighter( );
-				Element element = (Element) fighterList.get( i );
-				npc.setId( Short.parseShort( element.getChildText( "id" ) ) );
-				npc.setName( element.getChildText( "name" ) );
-				npc.setDesc( element.getChildText( "desc" ) );
-				npc.setHpMax( Integer.parseInt( element.getChildText( "hpMax" ) ) );
-				npc.setHp( npc.getHpMax() );
-				npc.setSpMax( Integer.parseInt( element.getChildText( "spMax" ) ) );
-				npc.setSp( npc.getSpMax() );
-				npc.setPhyAttack( Integer.parseInt( element.getChildText( "phyAttack" ) ) );
-				npc.setPhyDefend( Integer.parseInt( element.getChildText( "phyDefend" ) ) );
-				npc.setSpeed( Integer.parseInt( element.getChildText( "speed" ) ) );
-				npc.setHitRate( Integer.parseInt( element.getChildText( "hitRate" ) ) );
-				npc.setDodgeRate( Integer.parseInt( element.getChildText( "dodgeRate" ) ) );
-				npc.setCrit( Integer.parseInt( element.getChildText( "crit" ) ) );
-				npc.setUnCrit( Integer.parseInt( element.getChildText( "unCrit" ) ) );
-				npc.setBlock( Integer.parseInt( element.getChildText( "block" ) ) );
-				npc.setUnBlock( Integer.parseInt( element.getChildText( "unBlock" ) ) );
-				SkillTemplet skillTemplet = SkillTempletCfg.getSkillTempletById( Byte.parseByte( element.getChildText( "skillTempletId" ) ) );
-				npc.setSkillTemplet( skillTemplet  );
-			
-				/*******************关闭打印****************************
-							System.out.println( npc );
-				********************************************************/
-				
-				NpcFighter temp = npcFighters.put( npc.getId(), npc );
+				NpcFighterTemplet ft = new NpcFighterTemplet( (Element)fighterList.get(i) );
+				NpcFighterTemplet temp = npcFighterTemplets.put( ft.getTempletId(), ft );
 				if( temp != null ){
-					throw new RuntimeException( "npc战士" + npc.getId() + "重复了" );
+					throw new RuntimeException( "npc战士模板" + ft.getTempletId() + "重复了" );
 				}
 				
 			}
@@ -92,9 +64,8 @@ public class NpcFighterTempletCfg {
 	 * @param templetId
 	 * @return
 	 */
-	public static NpcFighter getNpcCloneById( short templetId ){
-		NpcFighter npc = npcFighters.get( templetId );
-		return new NpcFighter( npc );
+	public static NpcFighterTemplet getNpcCloneById( short templetId ){
+		return npcFighterTemplets.get( templetId );
 	}
 	public static void main(String[] args) {
 		

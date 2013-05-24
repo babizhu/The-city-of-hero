@@ -93,8 +93,8 @@ private static final Map<Short,MissionTemplet> missions = new HashMap<Short, Mis
 			Short fighterId = Short.parseShort( s.split( "," )[0] );
 			byte pos = Byte.parseByte( s.split( "," )[1] );
 			
-			if( pos < 0 || pos > 8 ) {
-				throw new RuntimeException( content + "错误，配置表中的战士位置必须满足: 0 <= pos <= 8!" );
+			if( pos < 0 || pos > Formation.TOTAL_COUNT ) {
+				throw new RuntimeException( content + "错误，配置表中的战士位置必须满足: 0 <= pos <= " + Formation.TOTAL_COUNT );
 			}
 			
 			NpcFighter f = NpcFighterTempletCfg.getNpcCloneById( fighterId );

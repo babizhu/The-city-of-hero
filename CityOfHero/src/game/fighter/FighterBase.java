@@ -5,6 +5,7 @@ import game.battle.skill.SkillTemplet;
 
 public class FighterBase implements IFighter {
 
+	
 	/**
 	 * 名字
 	 */
@@ -15,10 +16,6 @@ public class FighterBase implements IFighter {
 	 */
 	byte						position;
 	
-	/**
-	 * 等级
-	 */
-	short						level = 1;
 	
 	/**
 	 * 当前血量
@@ -30,15 +27,6 @@ public class FighterBase implements IFighter {
 	 */
 	int							hpMax;
 	
-	/**
-	 * 当前sp
-	 */
-	int							sp;
-	
-	/**
-	 * sp最大值
-	 */
-	int							spMax;
 	
 	/**
 	 * 速度
@@ -56,14 +44,19 @@ public class FighterBase implements IFighter {
 	int							phyDefend;
 	
 	/**
-	 * 命中率
+	 * 魔法攻击力
 	 */
-	int							hitRate;			
+	int							magicAttack;
 	
 	/**
-	 * 闪避率
+	 * 魔法防御力
 	 */
-	int							dodgeRate;	
+	int							magicDefend;
+	
+	/**
+	 * 闪避
+	 */
+	int							dodge;	
 	
 	/**
 	 * 暴击
@@ -71,19 +64,9 @@ public class FighterBase implements IFighter {
 	int							crit;
 	
 	/**
-	 * 反暴击
+	 * 暴击倍数
 	 */	
-	int							unCrit;
-	
-	/**
-	 * 格挡
-	 */
-	int							block;
-	
-	/**
-	 * 反格挡
-	 */
-	int							unBlock;
+	float						critMultiple;
 	
 	/**
 	 * 技能模板
@@ -104,9 +87,9 @@ public class FighterBase implements IFighter {
 	private boolean				isChaos		= false;
 	
 	/*
-	 * 是否处于战场的左边
+	 * 是否处于战场的攻击方
 	 */
-	private boolean				isLeft			= true;
+	private boolean				isAttack			= true;
 	
 	private BuffManager			buffManager;
 
@@ -124,25 +107,22 @@ public class FighterBase implements IFighter {
 	 */
 	public FighterBase( FighterBase f ) {
 		position = f.position;
-		level = f.level;
+		
 		hp = f.hp;
 		hpMax = f.hpMax;
-		sp = f.sp;
-		spMax = f.spMax;
 		speed = f.speed;
 		phyAttack = f.phyAttack;
 		phyDefend = f.phyDefend;
-		hitRate = f.hitRate;
-		dodgeRate = f.dodgeRate;
 		crit = f.crit;
-		unCrit = f.unCrit;
-		block = f.block;
-		unBlock = f.unBlock;
 		skillTemplet = f.skillTemplet;
 		name = f.name;
-		isLeft = f.isLeft;
+		isAttack = f.isAttack;
 		initForBattle();
 
+	}
+	
+	public int getSpeed(){
+		return speed;
 	}
 
 	public FighterBase() {
@@ -179,10 +159,7 @@ public class FighterBase implements IFighter {
 //		return ErrorCode.SUCCESS;
 //	}
 
-	@Override
-	public short getLevel() {
-		return level;
-	}
+	
 
 	public int getHp() {
 		return hp;
@@ -200,36 +177,9 @@ public class FighterBase implements IFighter {
 		this.hpMax = hpMax;
 	}
 
-	public int getSp() {
-		return sp;
-	}
-
-	public void setSp(int sp) {
-		this.sp = sp;
-	}
-
-	/**
-	 * @see #spMax
-	 * @return
-	 */
-	public int getSpMax() {
-		return spMax;
-	}
-
-	public void setSpMax(int spMax) {
-		this.spMax = spMax;
-	}
-
-	public int getSpeed() {
-		return speed;
-	}
-
+	
 	public void setSpeed(int speed) {
 		this.speed = speed;
-	}
-
-	public void setLevel(short level) {
-		this.level = level;
 	}
 
 	public int getPhyAttack() {
@@ -253,15 +203,15 @@ public class FighterBase implements IFighter {
 	}
 
 	/**
-	 * 战士是否位于战场左边
+	 * 战士是否位于战场的攻击方，也就是下方
 	 * @return
 	 */
-	public boolean isLeft() {
-		return isLeft;
+	public boolean isBottom() {
+		return isAttack;
 	}
 
-	public void setLeft(boolean isLeft) {
-		this.isLeft = isLeft;
+	public void setBottom(boolean isBottom) {
+		isAttack = isBottom;
 	}
 
 	public void setCanHit(boolean isCanHit) {
@@ -282,28 +232,18 @@ public class FighterBase implements IFighter {
 
 	
 
-	public void setHitRate(int hitRate) {
-		this.hitRate = hitRate;
+
+	public void setDodge(int dodge) {
+		this.dodge = dodge;
 	}
 
-	public void setDodgeRate(int dodgeRate) {
-		this.dodgeRate = dodgeRate;
-	}
-
-	/**
-	 * 命中率
-	 * @return
-	 */
-	public int getHitRate() {
-		return hitRate;
-	}
 
 	/**
 	 * 闪避率
 	 * @return
 	 */
-	public int getDodgeRate() {
-		return dodgeRate;
+	public int getDodge() {
+		return dodge;
 	}
 
 	
@@ -316,37 +256,6 @@ public class FighterBase implements IFighter {
 		return crit;
 	}
 
-	/**
-	 * 反暴击
-	 * @return
-	 */
-	public int getUnCrit() {
-		return unCrit;
-	}
-
-	/**
-	 * 格挡
-	 * @return
-	 */
-	public int getBlock() {
-		return block;
-	}
-
-	public void setBlock(int block) {
-		this.block = block;
-	}
-
-	/**
-	 * 反格挡
-	 * @return
-	 */
-	public int getUnBlock() {
-		return unBlock;
-	}
-
-	public void setUnBlock(int unBlock) {
-		this.unBlock = unBlock;
-	}
 
 	public void setPhyDefend(int phyDefend) {
 		this.phyDefend = phyDefend;
@@ -356,9 +265,6 @@ public class FighterBase implements IFighter {
 		this.crit = crit;
 	}
 
-	public void setUnCrit(int unCrit) {
-		this.unCrit = unCrit;
-	}
 
 	public boolean isDie() {
 		return hp <= 0;
@@ -376,10 +282,6 @@ public class FighterBase implements IFighter {
 		this.name = name;
 	}
 
-	public void setSkillTemplet(SkillTemplet skillTemplet) {
-		this.skillTemplet = skillTemplet;
-	}
-	
 	
 
 	public boolean isChaos() {
@@ -394,22 +296,19 @@ public class FighterBase implements IFighter {
 		this.isChaos = isHunluan;
 	}
 
-	@Override
-	public String toString() {
-		return "BaseFighter [name=" + name + ", position=" + position
-				+ ", level=" + level + ", hp=" + hp + ", hpMax=" + hpMax
-				+ ", sp=" + sp + ", spMax=" + spMax + ", speed=" + speed
-				+ ", phyAttack=" + phyAttack + ", phyDefend=" + phyDefend
-				+ ", hitRate=" + hitRate + ", dodgeRate=" + dodgeRate
-				+ ", crit=" + crit + ", unCrit=" + unCrit + ", block=" + block
-				+ ", unBlock=" + unBlock + ", skillTemplet=" + skillTemplet
-				+ ", isCanHit=" + isCanHit + ", isHunluan=" + isChaos
-				+ ", isLeft=" + isLeft + ", buffManager=" + buffManager + "]";
-	}
 
 	public String toSimpleString() {
 		return "name=" + name + ", position=" + position;
 		
+	}
+
+	public boolean CanSkill() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public float getCritMultiple() {
+		return critMultiple;
 	}
 
 

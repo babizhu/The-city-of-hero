@@ -23,13 +23,7 @@ public enum FighterAttribute {
 			fighter.setHp( fighter.getHp() + numToChange );
 			
 		}
-	},SP(3) {
-		@Override
-		public
-		void run(FighterBase fighter, int numToChange) {
-			fighter.setSp( fighter.getSp() + numToChange );			
-		}
-	},PHY_ATTACK(4){
+	},PHY_ATTACK(3){
 
 		@Override
 		public void run(FighterBase fighter, int numToChange) {

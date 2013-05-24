@@ -10,10 +10,6 @@ public interface IFighter {
 	 */
 	//ErrorCode dress( long oldPropId, long newPropId );
 	
-	/**
-	 * 返回该战士的等级
-	 * @return
-	 */
-	short getLevel();
+	
 
 }

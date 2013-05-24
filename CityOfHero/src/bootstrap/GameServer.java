@@ -47,9 +47,14 @@ public class GameServer extends Server{
 	 * 初始化系统配置文件
 	 */
 	private void readAllCfg(){
-		PropTempletCfg.init();
-		TaskTempletCfg.init();
-		MissionTempletCfg.init();
+		try{
+			PropTempletCfg.init();
+			TaskTempletCfg.init();
+			MissionTempletCfg.init();
+		}catch( Exception e ){
+			e.printStackTrace();
+			System.exit(0);
+		}
 	}
 	public static void main(String[] args) throws IOException, JMException {
 		

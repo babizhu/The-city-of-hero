@@ -22,7 +22,7 @@ public class ParseBattleSituation {
 	ByteBuffer 				data;
 	
 	private IFormation getFriend( FighterBase fighter ){
-		return fighter.isLeft() ? attackers : defenders;
+		return fighter.isBottom() ? attackers : defenders;
 	}
 	public ParseBattleSituation( IFormation aFormation, IFormation dFormation, BattleSituation situation ) {
 		attackers = aFormation;

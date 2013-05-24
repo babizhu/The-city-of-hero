@@ -30,7 +30,7 @@ public class Formation implements IFormation{
 	/**
 	 * 阵型的总人数
 	 */
-	private static final byte				TOTAL_COUNT = 8;
+	public static final byte				TOTAL_COUNT = 8;
 	private static final int 				COUNT_PER_ROW = 4;
 	
 	private List<FighterBase> 				fighters;
@@ -115,7 +115,7 @@ public class Formation implements IFormation{
 		position += TOTAL_COUNT;
 		
 		fighter.setPosition( position );//上下水平翻转
-		fighter.setLeft( false );
+		fighter.setBottom(false);
 	}
 	@Override
 	/**
@@ -171,6 +171,7 @@ public class Formation implements IFormation{
 				return f;
 			}
 		}
+		
 		return null;
 	}
 

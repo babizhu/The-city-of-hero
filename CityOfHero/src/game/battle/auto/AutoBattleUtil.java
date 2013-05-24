@@ -10,12 +10,11 @@ import java.util.Comparator;
 
 import util.RandomUtil;
 
-public class MobileAutoBattleUtil implements IBattleUtil {
+public class AutoBattleUtil implements IBattleUtil {
 
-	private static final float 			BLOCK_DAMAGE_RATE = 0.5f;
 	
-	private static final IBattleUtil 	INSTANCE = new MobileAutoBattleUtil();
-	private MobileAutoBattleUtil() {}
+	private static final IBattleUtil 	INSTANCE = new AutoBattleUtil();
+	private AutoBattleUtil() {}
 	public static final IBattleUtil getInstance(){
 		return INSTANCE;
 	}
@@ -31,22 +30,8 @@ public class MobileAutoBattleUtil implements IBattleUtil {
 	};
 	
 	/**
-	 * 是否格挡并反击
-	 * @param attacker
-	 * @param defender
-	 * @return
-	 */
-	private boolean isBlockAndCounterAttack( FighterBase attacker, FighterBase defender ) {
-		int r = RandomUtil.getRandomInt( 0, 100 );//随机值
-		r = 50;//取消随机对测试的影响
-		float result = (float)(attacker.getBlock() + 500) / (defender.getUnBlock() + 500) - 1;
-		result *= 100;
-		return result > r;	
-	}
-	
-	/**
 	 * 判断攻击者是否命中<br>
-	 * 公式				命中率 = （自身命中等级+500）/(敌方闪避等级+500)    随机一个数字（1~100），随机数小于等于命中值 即为命中			
+	 * 公式				由防御者的闪避率决定，闪避率越低，越容易命中			
 	 * @param attacker			攻击者
 	 * @param defender			防御者
 	 * @return
@@ -56,31 +41,23 @@ public class MobileAutoBattleUtil implements IBattleUtil {
 	 */
 	private boolean isHit( FighterBase attacker, FighterBase defender ) {
 		int r = RandomUtil.getRandomInt( 0, 100 );//随机值
-		r = 50;//取消随机对测试的影响
-		float result = (float)(attacker.getHitRate() + 500) / (defender.getDodgeRate() + 500);
-		result *= 100;
-		return result > r;
+		
+		return r > defender.getDodge();
 	}
 	
 	/**
-	 *	暴击率 =  （自身暴击等级 + 500)/（敌方韧性等级 + 500）- 1
+	 *	是否暴击
 	 *
 	 * @param attacker
 	 * @param defender
 	 * @return 
 	 */
-	private byte calcCrit( FighterBase attacker, FighterBase defender ) {
-		
-		byte crit = 1;//暴击加成
+	private boolean calcCrit( FighterBase attacker, FighterBase defender ) {
 		
 		int r = RandomUtil.getRandomInt( 0, 100 );//随机值
-		r = 10;//取消随机对测试的影响
-		float result = (float)( attacker.getCrit() + 500 ) / ( defender.getUnCrit() + 500 ) - 1;
-		result *= 100f;
-		if( result > r ){//发生了暴击
-			crit = (byte) RandomUtil.getRandomInt( 2, 4 );//计算实际的暴击范畴2-4
-		}
-		return crit;
+		
+		return r < attacker.getDodge();
+		
 	}
 
 	/**
@@ -100,16 +77,15 @@ public class MobileAutoBattleUtil implements IBattleUtil {
 			return info;
 		}
 		
-		int crit  = calcCrit(attacker, defender);
-		boolean isBlock = this.isBlockAndCounterAttack(attacker, defender);
+		boolean crit  = calcCrit(attacker, defender);
+		
+		
 		
 		int damage = formula.run( attacker, defender, arguments );
-		damage *= crit;
-		if( isBlock ){
-			damage *= BLOCK_DAMAGE_RATE;
+		if( crit ){
+			damage *= attacker.getCritMultiple();
 		}
-		info.setCrit( crit );
-		info.SetBlock( isBlock );
+		info.setCrit( crit?1:0 );
 		info.SetHit( isHit );
 		
 		damage = defender.getBm().run( damage, BuffRunPoint.AFTER_DEFENDING );
@@ -120,9 +96,7 @@ public class MobileAutoBattleUtil implements IBattleUtil {
 
 	@Override
 	public int calcCounterAttackDamage(FighterBase attacker, FighterBase defender) {
-		int damage = Formula.NormalAttackFormula.run( attacker, defender, null );
-
-		return (int) (damage * BLOCK_DAMAGE_RATE);
+		throw new UnsupportedOperationException();
 	}
 	@Override
 	public Comparator<FighterBase> getOrderComparator() {
@@ -137,7 +111,6 @@ public class MobileAutoBattleUtil implements IBattleUtil {
 		System.out.println( r );
 		
 		int damage = 301;
-		damage *= BLOCK_DAMAGE_RATE;
 		System.out.println( damage);
 	}
 	
