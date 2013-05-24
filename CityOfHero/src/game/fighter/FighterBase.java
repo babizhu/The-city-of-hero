@@ -8,10 +8,6 @@ public class FighterBase implements IFighter {
 
 	private final FighterTempletBase			templet;
 	
-	/**
-	 * 所在阵型中的位置
-	 */
-	private final byte							position;
 	
 	
 	/**
@@ -46,7 +42,7 @@ public class FighterBase implements IFighter {
 	 */
 	public FighterBase( FighterBase f ) {
 		templet = f.getTemplet();		
-		position = f.position;		
+//		position = f.getPosition();		
 		hp = templet.getHpBase();
 		isAttack = f.isAttack;
 		buffManager = new BuffManager();
