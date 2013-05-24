@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--主线战斗任务的配置表-->
+<missions>
+	<mission>
+		<id>1</id>
+		<name>水帘洞府</name>
+		<desc>探寻水帘洞</desc>
+		<npc0>1,2|3,0|</npc0>
+		<npcPet0>0</npcPet0>
+		<npc1>1,2</npc1>
+		<npcPet1>0</npcPet1>
+		<npc2>1,2|3,4|</npc2>
+		<npcPet2>0</npcPet2>
+	</mission>
+	<mission>
+		<id>2</id>
+		<name>暴风之眼</name>
+		<desc>获取进入暴风之眼的通行证吧</desc>
+		<npc0>3,2|</npc0>
+		<npcPet0>0</npcPet0>
+		<npc1>2,2|3,1|</npc1>
+		<npcPet1>0</npcPet1>
+	</mission>
+</missions>
