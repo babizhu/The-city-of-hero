@@ -19,6 +19,6 @@ public interface IGameLogic {
 	 * 玩家关闭连接，退出游戏
 	 * @param con
 	 */
-	void exit( INonBlockingConnection con ) throws IOException;
+	void userExit( INonBlockingConnection con ) throws IOException;
 
 }

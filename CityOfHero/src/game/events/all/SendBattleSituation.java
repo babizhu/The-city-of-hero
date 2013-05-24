@@ -1,19 +1,20 @@
 package game.events.all;
 
+import game.battle.auto.AutoBattle;
+import game.battle.auto.Formation;
+import game.battle.auto.ParseBattleSituation;
+import game.battle.formation.IFormation;
+import game.events.EventBase;
+import game.fighter.FighterBase;
+import game.fighter.cfg.NpcFighterTempletCfg;
+import game.mission.cfg.MissionTempletCfg;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
 import user.UserInfo;
-import game.battle.auto.ParseBattleSituation;
-import game.battle.auto.web.WebAutoBattle;
-import game.battle.auto.web.Formation9;
-import game.battle.formation.IFormation;
-import game.events.EventBase;
-import game.fighter.FighterBase;
-import game.fighter.cfg.NpcFighterTempletCfg;
-import game.mission.cfg.MissionTempletCfg;
 
 /**
  * 和客户端进行通信测试，专门用与测试的，不是正式的程序
@@ -32,7 +33,7 @@ public class SendBattleSituation extends EventBase {
 		fighter = NpcFighterTempletCfg.getNpcCloneById( (short) 2 );
 		fighter.setPosition( (byte) 3 );
 		attackers.add( fighter );
-		aFormation = new Formation9( attackers, true, null );
+		aFormation = new Formation( attackers, true, null );
 //	
 		short missionId = 2;
 		//aFormation = MissionTempletCfg.getTempletById( missionId ).getFormationClone( 0 );
@@ -44,7 +45,7 @@ public class SendBattleSituation extends EventBase {
 		
 		init();
 		
-		WebAutoBattle battle = new WebAutoBattle( aFormation, dFormation );
+		AutoBattle battle = new AutoBattle( aFormation, dFormation );
 		battle.run();
 		ByteBuffer buffer = buildEmptyPackage( 2048 );
 		ByteBuffer content = battle.getBattleSituation().getData().asReadOnlyBuffer();

@@ -19,7 +19,7 @@
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.15-bin.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.6.6.jar"/>
 	<classpathentry kind="lib" path="lib/xSocket-2.8.14-sources.jar"/>
-	<classpathentry kind="lib" path="lib/xSocket-2.8.14.jar"/>
+	<classpathentry kind="lib" path="lib/xSocket-2.8.14.jar" sourcepath="lib/xSocket-2.8.14-sources.jar"/>
 	<classpathentry kind="lib" path="D:/eclipse/plugins/org.junit_4.10.0.v4_10_0_v20120426-0900/junit.jar" sourcepath="D:/eclipse/plugins/org.junit.source_4.10.0.v4_10_0_v20120426-0900.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="http://www.junit.org/junit/javadoc/4.5"/>

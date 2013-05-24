@@ -1,7 +1,5 @@
 package game.battle.auto;
 
-import game.battle.auto.web.WebAutoBattle;
-import game.battle.auto.web.Formation9;
 import game.battle.formation.IFormation;
 import game.fighter.FighterBase;
 import game.fighter.cfg.NpcFighterTempletCfg;
@@ -28,7 +26,7 @@ public class AutoBattleTest {
 		fighter = NpcFighterTempletCfg.getNpcCloneById( (short) 2 );
 		fighter.setPosition( (byte) 3 );
 		attackers.add( fighter );
-		aFormation = new Formation9( attackers, true, null );
+		aFormation = new Formation( attackers, true, null );
 //	
 		short missionId = 2;
 		//aFormation = MissionTempletCfg.getTempletById( missionId ).getFormationClone( 0 );
@@ -58,11 +56,11 @@ public class AutoBattleTest {
 		
 		int count = 1;//循环次数
 		long begin = System.nanoTime();
-		WebAutoBattle battle= null;
+		AutoBattle battle= null;
 		for( int i = 0; i < count; i++ ){
 			init();
 		
-			battle = new WebAutoBattle( aFormation, dFormation );
+			battle = new AutoBattle( aFormation, dFormation );
 			battle.run();
 		}
 		

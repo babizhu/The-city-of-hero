@@ -1,6 +1,6 @@
 package game.mission.cfg;
 
-import game.battle.auto.web.Formation9;
+import game.battle.auto.Formation;
 import game.battle.formation.IFormation;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class MissionTemplet {
 	 * 获取某一波的战士阵型的深度克隆数据，波数从0开始
 	 */
 	public IFormation getFormationCloneByWave( int wave ){		
-		return new Formation9( formations.get( wave ) );
+		return new Formation( formations.get( wave ) );
 	}
 	
 	public MissionTemplet(short id, String name, String desc,

@@ -24,8 +24,8 @@ import util.ErrorCode;
  */
 public final class GameMainLogic implements IGameLogic {
 
-	private static final  Logger logger = LoggerFactory.getLogger(GameMainLogic.class);
-	private static final GameMainLogic instance = new GameMainLogic();
+	private static final  Logger 		logger 		= LoggerFactory.getLogger(GameMainLogic.class);
+	private static final GameMainLogic 	instance	= new GameMainLogic();
 
 	public static final GameMainLogic getInstance() {
 		return instance;
@@ -114,7 +114,7 @@ public final class GameMainLogic implements IGameLogic {
 	 * 
 	 */
 	@Override
-	public void exit( INonBlockingConnection con ) throws IOException {
+	public void userExit( INonBlockingConnection con ) throws IOException {
 		String name = (String) con.getAttachment();
 
 		if( name != null ){

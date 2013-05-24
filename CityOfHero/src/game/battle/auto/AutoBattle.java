@@ -1,10 +1,8 @@
-package game.battle.auto.mobile;
+package game.battle.auto;
 
+import game.battle.BattleBase;
 import game.battle.IBattleUtil;
 import game.battle.Pet;
-import game.battle.auto.AttackInfo;
-import game.battle.auto.AutoBattleBase;
-import game.battle.auto.BattleSituation;
 import game.battle.buff.BuffRunPoint;
 import game.battle.formation.IFormation;
 import game.battle.formula.Formula;
@@ -25,9 +23,9 @@ import org.slf4j.LoggerFactory;
  * @author liukun
  * 2012-9-27 下午05:52:32
  */
-public class MobileAutoBattle extends AutoBattleBase {
+public class AutoBattle extends BattleBase {
 
-	private static final Logger 		logger = LoggerFactory.getLogger( MobileAutoBattle.class );
+	private static final Logger 		logger = LoggerFactory.getLogger( AutoBattle.class );
 	private static final IBattleUtil	util = MobileAutoBattleUtil.getInstance();
 
 	private static final int 			SKILL_ATTACK_NEED_SP = 1000;
@@ -61,7 +59,7 @@ public class MobileAutoBattle extends AutoBattleBase {
 	 */
 	private BattleSituation				battleSituation = new BattleSituation( 1024 );	
 
-	public MobileAutoBattle( IFormation attackers, IFormation defenders ) {
+	public AutoBattle( IFormation attackers, IFormation defenders ) {
 		super();		
 		this.attackers = attackers;
 		this.defenders = defenders;
@@ -280,7 +278,7 @@ public class MobileAutoBattle extends AutoBattleBase {
 		return false;
 	}
 
-	@Override
+	
 	public BattleSituation getBattleSituation() {
 		return battleSituation;
 	}

@@ -1,7 +1,7 @@
 package game.mission.cfg;
 
 import game.battle.Pet;
-import game.battle.auto.web.Formation9;
+import game.battle.auto.Formation;
 import game.battle.formation.IFormation;
 import game.fighter.FighterBase;
 import game.fighter.NpcFighter;
@@ -79,7 +79,7 @@ private static final Map<Short,MissionTemplet> missions = new HashMap<Short, Mis
 			}
 			List<FighterBase> fightersList = parseFighterList( content );
 			Pet pet = null;
-			IFormation formation = new Formation9( fightersList, isLeft, pet );
+			IFormation formation = new Formation( fightersList, isLeft, pet );
 			
 			formations.add( formation );
 		}

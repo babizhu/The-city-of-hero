@@ -1,8 +1,7 @@
-package game.battle.auto.web;
+package game.battle.auto;
 
 
 import game.battle.IBattleUtil;
-import game.battle.auto.AttackInfo;
 import game.battle.buff.BuffRunPoint;
 import game.battle.formula.Formula;
 import game.fighter.FighterBase;
@@ -11,12 +10,12 @@ import java.util.Comparator;
 
 import util.RandomUtil;
 
-public class WebAutoBattleUtil implements IBattleUtil {
+public class MobileAutoBattleUtil implements IBattleUtil {
 
 	private static final float 			BLOCK_DAMAGE_RATE = 0.5f;
 	
-	private static final IBattleUtil 	INSTANCE = new WebAutoBattleUtil();
-	private WebAutoBattleUtil() {}
+	private static final IBattleUtil 	INSTANCE = new MobileAutoBattleUtil();
+	private MobileAutoBattleUtil() {}
 	public static final IBattleUtil getInstance(){
 		return INSTANCE;
 	}
@@ -47,8 +46,7 @@ public class WebAutoBattleUtil implements IBattleUtil {
 	
 	/**
 	 * 判断攻击者是否命中<br>
-	 * 以防御方的闪避率决定，此闪避率在0~100之间，越大闪避几率越高
-	 * 			
+	 * 公式				命中率 = （自身命中等级+500）/(敌方闪避等级+500)    随机一个数字（1~100），随机数小于等于命中值 即为命中			
 	 * @param attacker			攻击者
 	 * @param defender			防御者
 	 * @return

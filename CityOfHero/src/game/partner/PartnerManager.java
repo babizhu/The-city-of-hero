@@ -1,6 +1,6 @@
 package game.partner;
 
-import game.battle.auto.web.Formation9;
+import game.battle.auto.Formation;
 import game.battle.formation.IFormation;
 import game.prop.PropManager;
 import game.prop.equipment.EquipmentBase;
@@ -84,8 +84,8 @@ public class PartnerManager {
 		return null;
 	}
 
-	public IFormation getFormation( boolean isLeft ) {
-		IFormation f = new Formation9( null, isLeft, null );
+	public IFormation getFormation( boolean isAttack ) {
+		IFormation f = new Formation( null, isAttack, null );
 		return f;
 	}
 

@@ -1,11 +1,10 @@
 package game.battle.auto;
 
 import game.battle.AttackType;
-import game.battle.auto.web.WebAutoBattle;
 import game.battle.formation.IFormation;
 import game.battle.skill.cfg.SkillTempletCfg;
-import game.fighter.FighterBase;
 import game.fighter.FighterAttribute;
+import game.fighter.FighterBase;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -154,10 +153,10 @@ public class ParseBattleSituation {
 		FighterBase attacker = getFighterByPos(attackerPos);
 		FighterBase defender = getFighterByPos(defenderPos);		
 		if( info.isHit() ){
-			attacker.setSp( attacker.getSp() + WebAutoBattle.SP_TO_ADD );
-			if( info.getDamage() > 1 ){//防止不死之身之类的技能长久不结束
-				defender.setSp( defender.getSp() + WebAutoBattle.SP_TO_ADD );
-			}
+//			attacker.setSp( attacker.getSp() + WebAutoBattle.SP_TO_ADD );
+//			if( info.getDamage() > 1 ){//防止不死之身之类的技能长久不结束
+//				defender.setSp( defender.getSp() + WebAutoBattle.SP_TO_ADD );
+//			}
 		
 			defender.setHp( defender.getHp() - damage );
 			if( info.isBlock() ){

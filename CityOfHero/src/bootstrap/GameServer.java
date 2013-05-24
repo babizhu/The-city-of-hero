@@ -56,13 +56,13 @@ public class GameServer extends Server{
 		System.out.println("编码集= "+System.getProperty("file.encoding"));
 		System.out.println("编码集1= "+Charset.defaultCharset() );
 
-		System.out.println( UtilBase.secondsToDateStr( SystemTimer.currentTimeSecond() ) + " server start now..." );
+		System.out.println( UtilBase.secondsToDateStr( SystemTimer.currentTimeSecond() ) + " The city of hero start now..." );
         System.out.println( UtilBase.secondsToDateStr( SystemTimer.currentTimeSecond() ) + " game version: " + SystemCfg.VERSION );        
 		
         
-        InetAddress address = InetAddress.getByName( "localhost" );
+//        InetAddress address = InetAddress.getByName( null );
 		
-		GameServer server = new GameServer( address, SystemCfg.PORT, new GameHandler() );
+		GameServer server = new GameServer( null, SystemCfg.PORT, new GameHandler() );
 		server.readAllCfg();
 
 		

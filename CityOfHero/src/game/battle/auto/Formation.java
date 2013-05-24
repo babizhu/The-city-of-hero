@@ -1,4 +1,4 @@
-package game.battle.auto.mobile;
+package game.battle.auto;
 
 import game.battle.Pet;
 import game.battle.formation.ChooseFighters;
@@ -25,7 +25,7 @@ import java.util.List;
  * @author Administrator
  * 2013-5-22 下午2:46:51
  */
-public class Formation8 implements IFormation{
+public class Formation implements IFormation{
 
 	/**
 	 * 阵型的总人数
@@ -52,7 +52,7 @@ public class Formation8 implements IFormation{
 	 * @param formation
 	 * @return
 	 */
-	public Formation8( IFormation formation ){
+	public Formation( IFormation formation ){
 		List<FighterBase> oldList = formation.getAllFighters();
 		List<FighterBase> clonesList = new ArrayList<FighterBase>();
 		for( FighterBase bf : oldList ){
@@ -71,7 +71,7 @@ public class Formation8 implements IFormation{
 	 * 
 	 *	如有必要，请在调用处对 fightersList 进行克隆处理
 	 */
-	public Formation8( List<FighterBase> fightersList, boolean isBottom, Pet pet ) {
+	public Formation( List<FighterBase> fightersList, boolean isBottom, Pet pet ) {
 		if( fightersList == null || fightersList.size() == 0 ){
 			throw new IllegalArgumentException( (isBottom == true ? "攻方" : "守方") + "战士列表为空或者数量为0" );
 		}
@@ -336,7 +336,7 @@ public class Formation8 implements IFormation{
 		FighterBase f = new FighterBase();
 		List<FighterBase> fighters = new ArrayList<FighterBase>();
 		fighters.add( f );
-		Formation8 ff = new Formation8(fighters, false, null);
+		Formation ff = new Formation(fighters, false, null);
 		System.out.println( ff.getFighterOnEffect( null, null ));
 	}
 }
