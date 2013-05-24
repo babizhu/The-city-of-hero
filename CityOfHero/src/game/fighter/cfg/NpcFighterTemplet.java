@@ -33,7 +33,6 @@ public class NpcFighterTemplet {
 	 */
 	private final int							stepHp;
 	
-	
 	/**
 	 * 速度
 	 */
@@ -49,7 +48,6 @@ public class NpcFighterTemplet {
 	 */
 	private final int							stepPhyAttack;
 	
-	
 	/**
 	 * 基础物防
 	 */
@@ -58,8 +56,7 @@ public class NpcFighterTemplet {
 	/**
 	 * 物防成长值
 	 */
-	private final int							stepPhyDefend;
-	
+	private final int							stepPhyDefend;	
 	
 	
 	/**
@@ -80,8 +77,7 @@ public class NpcFighterTemplet {
 	/**
 	 * 魔防成长值
 	 */
-	private final 	int							stepMagicDefend;
-	
+	private final 	int							stepMagicDefend;	
 	
 	/**
 	 * 闪避
