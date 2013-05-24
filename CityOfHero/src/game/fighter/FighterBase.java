@@ -2,131 +2,62 @@ package game.fighter;
 
 import game.battle.auto.buff.BuffManager;
 import game.battle.skill.SkillTemplet;
+import game.fighter.cfg.FighterTempletBase;
 
 public class FighterBase implements IFighter {
 
-	
-	/**
-	 * 名字
-	 */
-	String						name;
+	private final FighterTempletBase			templet;
 	
 	/**
 	 * 所在阵型中的位置
 	 */
-	byte						position;
+	private final byte							position;
 	
 	
 	/**
 	 * 当前血量
 	 */
-	int							hp;
-	
-	/**
-	 * 血槽最大值
-	 */
-	int							hpMax;
-	
-	
-	/**
-	 * 速度
-	 */
-	int							speed;
-	
-	/**
-	 * 物理攻击力
-	 */
-	int							phyAttack;
-	
-	/**
-	 * 物理防御力
-	 */
-	int							phyDefend;
-	
-	/**
-	 * 魔法攻击力
-	 */
-	int							magicAttack;
-	
-	/**
-	 * 魔法防御力
-	 */
-	int							magicDefend;
-	
-	/**
-	 * 闪避
-	 */
-	int							dodge;	
-	
-	/**
-	 * 暴击
-	 */	
-	int							crit;
-	
-	/**
-	 * 暴击倍数
-	 */	
-	float						critMultiple;
-	
-	/**
-	 * 技能模板
-	 */
-	SkillTemplet				skillTemplet;
+	private int									hp;
 	
 	
 	/**
 	 * 是否允许出招
 	 */
-	private boolean 			isCanHit		= true;
+	private boolean 						isCanHit = true;
 	
 	/**
 	 * 是否混乱，如果混乱，那么加血会加对方，而攻击会攻击己方，甚至有可能攻击自己，这里可能存在一些问题，最好和策划仔细讨论：
 	 * 前端是否好做自己打自己的动画
 	 * 
 	 */
-	private boolean				isChaos		= false;
+	private boolean								isChaos	= false;
 	
 	/*
 	 * 是否处于战场的攻击方
 	 */
-	private boolean				isAttack			= true;
+	private final boolean						isAttack;
 	
-	private BuffManager			buffManager;
+	private final BuffManager					buffManager;
 
-	/**
-	 * 每次开战前必须进行的初始化工作
-	 * @param battle
-	 */
-	public void initForBattle(){
-		buffManager = new BuffManager();
-	}
-	
+		
 	/**
 	 * 拷贝构造函数，通常用于战斗前的准备工作
 	 * @param f
 	 */
 	public FighterBase( FighterBase f ) {
-		position = f.position;
-		
-		hp = f.hp;
-		hpMax = f.hpMax;
-		speed = f.speed;
-		phyAttack = f.phyAttack;
-		phyDefend = f.phyDefend;
-		crit = f.crit;
-		skillTemplet = f.skillTemplet;
-		name = f.name;
+		templet = f.getTemplet();		
+		position = f.position;		
+		hp = templet.getHpBase();
 		isAttack = f.isAttack;
-		initForBattle();
-
+		buffManager = new BuffManager();
 	}
 	
 	public int getSpeed(){
-		return speed;
+		return templet.getSpeed();
 	}
 
-	public FighterBase() {
-	}
+//	public FighterBase() {
+//	}
 
 ////	@Override
 ////	public ErrorCode dress(long oldPropId, long newPropId) {
@@ -169,26 +100,10 @@ public class FighterBase implements IFighter {
 		this.hp = hp;
 	}
 
-	public int getHpMax() {
-		return hpMax;
-	}
-
-	public void setHpMax(int hpMax) {
-		this.hpMax = hpMax;
-	}
-
-	
-	public void setSpeed(int speed) {
-		this.speed = speed;
-	}
-
 	public int getPhyAttack() {
-		return phyAttack;
+		return templet.getPhyAttackBase();
 	}
 
-	public void setPhyAttack( int phyAttack ) {
-		this.phyAttack = phyAttack;
-	}
 
 	public BuffManager getBm() {
 		return buffManager;
@@ -309,6 +224,10 @@ public class FighterBase implements IFighter {
 
 	public float getCritMultiple() {
 		return critMultiple;
+	}
+
+	public FighterTempletBase getTemplet() {
+		return templet;
 	}
 
 
