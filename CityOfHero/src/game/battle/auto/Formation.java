@@ -316,7 +316,10 @@ public class Formation implements IFormation{
 			break;
 		}
 		return null;
-	}	
+	}
+	
+	
+	
 
 	@Override
 	public String toString(){

@@ -12,13 +12,10 @@ public class FighterBase{
 	private int	 								magicAttack;
 	private int 								magicDefend;
 	
-<<<<<<< HEAD
 	/**
 	 * 所在阵型中的位置
 	 */
 	private byte								position;
-=======
->>>>>>> branch 'master' of https://github.com/babizhu/The-city-of-hero.git
 	
 	/**
 	 * 最大血量
@@ -66,7 +63,6 @@ public class FighterBase{
 	 * 拷贝构造函数
 	 * @param bf
 	 */
-<<<<<<< HEAD
 	public FighterBase(FighterBase fighter) {
 		this.setName(fighter.getName());
 		this.position = fighter.getPosition();
@@ -82,7 +78,6 @@ public class FighterBase{
 		this.setSpeed( fighter.getSpeed() );
 		this.setBottom( fighter.isBottom() );
 		
-
 	}
 
 	public SkillTemplet getSkillTemplet() {
