@@ -1,41 +1,24 @@
 package game.fighter;
 
+import game.fighter.cfg.NpcFighterTemplet;
+
 public class NpcFighter extends FighterBase {
 
-
-	private Short			id;
-	private String			desc;
-	
-	public NpcFighter( NpcFighter npc ) {
-		super( npc );
-		desc = npc.desc;
-		id = npc.id;
+	public NpcFighter( NpcFighterTemplet templet ) {
+		
+		setName( templet.name );
+		setHpMax( templet.hpBase );
+		setHp( getHpMax() );
+		setPhyAttack( templet.phyAttackBase );
+		setPhyDefend( templet.phyDefendBase );
+		setMagicAttack( templet.magicAttackBase );
+		setMagicDefend( templet.magicDefendBase );
+		
+		setDodge( templet.dodge );
+		setCrit( templet.crit );
+		setCritMultiple( templet.critMultiple );
+		setSpeed( templet.speed );
 	}
-
-	public NpcFighter() {
-	}
-
-	public Short getId() {
-		return id;
-	}
-
-	public void setId(Short id) {
-		this.id = id;
-	}
-
-	public String getDesc() {
-		return desc;
-	}
-
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
-
-	@Override
-	public String toString() {
-		return "NpcFighter [id=" + id + ", desc=" + desc + ", " + super.toString().substring( 13 );
-	}
-	
 	
 	
 }

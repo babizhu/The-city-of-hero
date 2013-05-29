@@ -13,74 +13,74 @@ import game.battle.skill.cfg.SkillTempletCfg;
  */
 public class FighterTempletBase {
 	
-	private final short							templetId;
+	public final int							templetId;
 	/**
 	 * 名字
 	 */
-	private final String						name;
+	public final String							name;
 	
 	/**
 	 * 描述
 	 */
-	private final String						desc;
+	public final String							desc;
 	
 	/**
 	 * 基础血量
 	 */
-	private final int							hpBase;
+	public final int							hpBase;
 		
 	/**
 	 * 速度
 	 */
-	private final int							speed;
+	public final int							speed;
 	
 	/**
 	 * 基础物攻
 	 */
-	private final int							phyAttackBase;
+	public final int							phyAttackBase;
 		
 	
 	/**
 	 * 基础物防
 	 */
-	private final int							phyDefendBase;
+	public final int							phyDefendBase;
 	
 		
 	/**
 	 * 基础魔攻
 	 */
-	private final 	int							magicAttackBase;
+	public final 	int							magicAttackBase;
 	
 	
 	
 	/**
 	 * 基础魔防
 	 */
-	private final 	int							magicDefendBase;
+	public final 	int							magicDefendBase;
 		
 	
 	/**
 	 * 闪避
 	 */
-	private final 	int							dodge;	
+	public final 	int							dodge;	
 	
 	/**
 	 * 暴击
 	 */	
-	private final 	int							crit;
+	public final 	int							crit;
 	
 	/**
 	 * 暴击倍数
 	 */	
-	private final 	float						critMultiple;
+	public final 	float						critMultiple;
 	
 	/**
 	 * 技能模板
 	 */
-	SkillTemplet								skillTemplet;
+	public final SkillTemplet					skillTemplet;
 	
 	public FighterTempletBase( Element element ) {
-		templetId = Short.parseShort( element.getChildText( "id" ) ) ;
+		templetId = Integer.parseInt( element.getChildText( "id" ) ) ;
 		name = element.getChildText( "name" );
 		desc = element.getChildText( "desc" );
 		hpBase = Integer.parseInt( element.getChildText( "hpBase" ) );
@@ -96,67 +96,18 @@ public class FighterTempletBase {
 		crit = Integer.parseInt( element.getChildText( "crit" ) ); 
 		critMultiple = Float.parseFloat( element.getChildText( "critMultiple" ) ); 
 
-		skillTemplet = SkillTempletCfg.getSkillTempletById( Byte.parseByte( element.getChildText( "skillTempletId" ) ) );
+		skillTemplet = SkillTempletCfg.getSkillTempletById( Integer.parseInt( element.getChildText( "skillTempletId" ) ) );
 	}
 
-	
-
-	public short getTempletId() {
-		return templetId;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getDesc() {
-		return desc;
-	}
-
-	public int getHpBase() {
-		return hpBase;
-	}
-
-	
-
-	public int getSpeed() {
-		return speed;
-	}
-
-	public int getPhyAttackBase() {
-		return phyAttackBase;
-	}
-
-
-	public int getPhyDefendBase() {
-		return phyDefendBase;
-	}
-
-
-	public int getMagicAttackBase() {
-		return magicAttackBase;
-	}
-
-
-	public int getMagicDefendBase() {
-		return magicDefendBase;
-	}
-
-
-	public int getDodge() {
-		return dodge;
-	}
-
-	public int getCrit() {
-		return crit;
-	}
-
-	public float getCritMultiple() {
-		return critMultiple;
-	}
-
-	public SkillTemplet getSkillTemplet() {
-		return skillTemplet;
+	@Override
+	public String toString() {
+		return "FighterTempletBase [templetId=" + templetId + ", name=" + name
+				+ ", desc=" + desc + ", hpBase=" + hpBase + ", speed=" + speed
+				+ ", phyAttackBase=" + phyAttackBase + ", phyDefendBase="
+				+ phyDefendBase + ", magicAttackBase=" + magicAttackBase
+				+ ", magicDefendBase=" + magicDefendBase + ", dodge=" + dodge
+				+ ", crit=" + crit + ", critMultiple=" + critMultiple
+				+ ", skillTemplet=" + skillTemplet + "]";
 	}
 	
 	

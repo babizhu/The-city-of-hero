@@ -48,7 +48,7 @@ public class Formation implements IFormation{
 	
 	
 	/**
-	 * 复制一份实例用于战斗，通常用于复制主线通关的mission的阵型，位于阵型的左边或者右边已经确定
+	 * 复制一份实例用于战斗，通常用于复制主线通关的mission的阵型，位于阵型的左边
 	 * @param formation
 	 * @return
 	 */
@@ -136,8 +136,7 @@ public class Formation implements IFormation{
 		List<FighterBase> ret = new ArrayList<FighterBase>();
 		for( FighterBase f : fighters ){
 			if( !f.isDie() ){
-				ret.add( f );
-				
+				ret.add( f );				
 			}
 		}
 		return ret;
@@ -171,7 +170,7 @@ public class Formation implements IFormation{
 				return f;
 			}
 		}
-		
+		System.out.println( "未找到被攻击者");
 		return null;
 	}
 

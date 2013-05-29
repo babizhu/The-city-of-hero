@@ -1,6 +1,5 @@
 package game.battle.formula;
 
-import util.RandomUtil;
 import game.fighter.FighterBase;
 
 public enum Formula {
@@ -12,13 +11,16 @@ public enum Formula {
 		@Override
 		public
 		int run(FighterBase attacker, FighterBase defender, float[] arguments) {
-			int r = RandomUtil.getRandomInt( 0, 40 );//伤害波动值，要求在-20~+20之间
-			r -= 20;
-			r = 0;//取消随机对测试的影响
-			float damage = attacker.getPhyAttack() * ( 1f - ( defender.getPhyDefend()/( defender.getPhyDefend() + 10000f ) ) );
-			damage *= 1f + r / 100f;
-			damage *= ((float)attacker.getLevel() + 10)/ ((float)defender.getLevel() + 10);
-			return (int) damage;
+//			int damage = 0;
+//			if( attacker.getPhyAttack() != 0 ){
+//				damage = attacker.getPhyAttack() - defender.getPhyDefend();
+//			}
+//			else{
+//				damage = attacker.getMagicAttack() - defender.getMagicDefend();
+//			}
+//			return damage;
+			
+			return attacker.getPhyAttack() != 0 ? attacker.getPhyAttack() - defender.getPhyDefend() : attacker.getMagicAttack() - defender.getMagicDefend();
 		}
 	},
 	
@@ -31,14 +33,7 @@ public enum Formula {
 		@Override
 		public
 		int run(FighterBase attacker, FighterBase defender, float[] arguments) {
-			int r = RandomUtil.getRandomInt( 0, 40 );//伤害波动值，要求在-20~+20之间
-			r -= 20;
-			r = 0;//取消随机对测试的影响
-			float damage = attacker.getPhyAttack() * ( 1f - ( defender.getPhyDefend()/( defender.getPhyDefend() + 10000f ) ) );
-			damage *= 1f + r / 100f;
-			damage *= ((float)attacker.getLevel() + 10)/ ((float)defender.getLevel() + 10);
-			damage *= arguments[0];//技能攻击，伤害直接*相应参数
-			return (int) damage;
+			throw new UnsupportedOperationException();
 		}
 	},
 	/**

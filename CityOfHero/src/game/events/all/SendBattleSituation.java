@@ -6,6 +6,7 @@ import game.battle.auto.ParseBattleSituation;
 import game.battle.formation.IFormation;
 import game.events.EventBase;
 import game.fighter.FighterBase;
+import game.fighter.NpcFighter;
 import game.fighter.cfg.NpcFighterTempletCfg;
 import game.mission.cfg.MissionTempletCfg;
 
@@ -28,9 +29,9 @@ public class SendBattleSituation extends EventBase {
 	
 	void init(){
 		List<FighterBase> attackers = new ArrayList<FighterBase>();		
-		FighterBase fighter = NpcFighterTempletCfg.getNpcCloneById( (short) 1 );
+		FighterBase fighter = new NpcFighter( NpcFighterTempletCfg.getNpcById( 101101 ) );
 		attackers.add( fighter );
-		fighter = NpcFighterTempletCfg.getNpcCloneById( (short) 2 );
+		fighter = new NpcFighter( NpcFighterTempletCfg.getNpcById( 101102 ) );
 		fighter.setPosition( (byte) 3 );
 		attackers.add( fighter );
 		aFormation = new Formation( attackers, true, null );
@@ -38,7 +39,6 @@ public class SendBattleSituation extends EventBase {
 		short missionId = 2;
 		//aFormation = MissionTempletCfg.getTempletById( missionId ).getFormationClone( 0 );
 		dFormation = MissionTempletCfg.getTempletById( missionId ).getFormationCloneByWave( 0 );
-
 	}
 	@Override
 	public void run(UserInfo user, ByteBuffer buf) throws IOException {

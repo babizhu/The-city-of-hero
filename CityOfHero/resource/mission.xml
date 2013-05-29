@@ -1,24 +1,81 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!--主线战斗任务的配置表-->
-<missions>
+﻿<?xml version='1.0' encoding='UTF-8'?><missions>
 	<mission>
 		<id>1</id>
-		<name>水帘洞府</name>
-		<desc>探寻水帘洞</desc>
-		<npc0>1,2|3,0|</npc0>
-		<npcPet0>0</npcPet0>
-		<npc1>1,2</npc1>
-		<npcPet1>0</npcPet1>
-		<npc2>1,2|3,4|</npc2>
-		<npcPet2>0</npcPet2>
+		<name>诺克萨斯1</name>
+		<zone_id>101</zone_id>
+		<zone_name>诺克萨斯</zone_name>
+		<fight0>101101,0|101101,3|101102,1|101102,2</fight0>
+		<fight1>101103,4|101103,7|101102,1|101102,3</fight1>
+		<fight2>101101,1|101102,2|101103,4|101103,5|101103,7</fight2>
+		<awardItem>无</awardItem>
+		<awardHeroExp>60</awardHeroExp>
+		<awardPlayerExp>100</awardPlayerExp>
+		<desc>xxx</desc>
 	</mission>
 	<mission>
 		<id>2</id>
-		<name>暴风之眼</name>
-		<desc>获取进入暴风之眼的通行证吧</desc>
-		<npc0>3,2|</npc0>
-		<npcPet0>0</npcPet0>
-		<npc1>2,2|3,1|</npc1>
-		<npcPet1>0</npcPet1>
+		<name>诺克萨斯2</name>
+		<zone_id>101</zone_id>
+		<zone_name>诺克萨斯</zone_name>
+		<fight0>101101,0|101101,3|101102,1|101102,2</fight0>
+		<fight1>101103,4|101103,7|101102,1|101102,3</fight1>
+		<fight2>101101,1|101102,2|101103,4|101103,5|101103,7</fight2>
+		<awardItem>无</awardItem>
+		<awardHeroExp>70</awardHeroExp>
+		<awardPlayerExp>110</awardPlayerExp>
+		<desc>xxx</desc>
+	</mission>
+	<mission>
+		<id>3</id>
+		<name>诺克萨斯3</name>
+		<zone_id>101</zone_id>
+		<zone_name>诺克萨斯</zone_name>
+		<fight0>101101,0|101101,3|101102,1|101102,2</fight0>
+		<fight1>101103,4|101103,7|101102,1|101102,3</fight1>
+		<fight2>101101,1|101102,2|101103,4|101103,5|101103,7</fight2>
+		<awardItem>无</awardItem>
+		<awardHeroExp>80</awardHeroExp>
+		<awardPlayerExp>120</awardPlayerExp>
+		<desc>xxx</desc>
+	</mission>
+	<mission>
+		<id>4</id>
+		<name>德玛西亚1</name>
+		<zone_id>102</zone_id>
+		<zone_name>德玛西亚</zone_name>
+		<fight0>101101,0|101101,3|101102,1|101102,2</fight0>
+		<fight1>101103,4|101103,7|101102,1|101102,3</fight1>
+		<fight2>101101,1|101102,2|101103,4|101103,5|101103,7</fight2>
+		<awardItem>无</awardItem>
+		<awardHeroExp>90</awardHeroExp>
+		<awardPlayerExp>200</awardPlayerExp>
+		<desc>xxx</desc>
+	</mission>
+	<mission>
+		<id>5</id>
+		<name>德玛西亚2</name>
+		<zone_id>102</zone_id>
+		<zone_name>德玛西亚</zone_name>
+		<fight0>101101,0|101101,3|101102,1|101102,2</fight0>
+		<fight1>101103,4|101103,7|101102,1|101102,3</fight1>
+		<fight2>101101,1|101102,2|101103,4|101103,5|101103,7</fight2>
+		<awardItem>无</awardItem>
+		<awardHeroExp>100</awardHeroExp>
+		<awardPlayerExp>220</awardPlayerExp>
+		<desc>xxx</desc>
+	</mission>
+	<mission>
+		<id>6</id>
+		<name>德玛西亚3</name>
+		<zone_id>102</zone_id>
+		<zone_name>德玛西亚</zone_name>
+		<fight0>101101,0|101101,3|101102,1|101102,2</fight0>
+		<fight1>101103,4|101103,7|101102,1|101102,3</fight1>
+		<fight2>101101,1|101102,2|101103,4|101103,5|101103,7</fight2>
+		<awardItem>无</awardItem>
+		<awardHeroExp>120</awardHeroExp>
+		<awardPlayerExp>240</awardPlayerExp>
+		<desc>xxx</desc>
 	</mission>
 </missions>
+

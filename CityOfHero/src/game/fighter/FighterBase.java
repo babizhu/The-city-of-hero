@@ -1,29 +1,36 @@
 package game.fighter;
 
+
 import game.battle.auto.buff.BuffManager;
 import game.battle.skill.SkillTemplet;
-import game.fighter.cfg.FighterTempletBase;
 
-public class FighterBase implements IFighter {
+public class FighterBase{
 
-	private final FighterTempletBase			templet;
+	private String								name;
+	private int									phyAttack;
+	private int									phyDefend;
+	private int	 								magicAttack;
+	private int 								magicDefend;
 	
 	/**
 	 * 所在阵型中的位置
 	 */
-	private final byte							position;
+	private byte								position;
 	
+	/**
+	 * 最大血量
+	 */
+	private int									hpMax;
 	
 	/**
 	 * 当前血量
 	 */
 	private int									hp;
 	
-	
 	/**
 	 * 是否允许出招
 	 */
-	private boolean 						isCanHit = true;
+	private boolean 							isCanHit = true;
 	
 	/**
 	 * 是否混乱，如果混乱，那么加血会加对方，而攻击会攻击己方，甚至有可能攻击自己，这里可能存在一些问题，最好和策划仔细讨论：
@@ -33,64 +40,97 @@ public class FighterBase implements IFighter {
 	private boolean								isChaos	= false;
 	
 	/*
-	 * 是否处于战场的攻击方
+	 * 是否处于战场的攻击方，手游中，下方通常是攻击方
 	 */
-	private final boolean						isAttack;
+	private  boolean							isBottom = true;
 	
-	private final BuffManager					buffManager;
+	private final BuffManager					buffManager = new BuffManager();
 
-		
+	private SkillTemplet 						skillTemplet;
+	
+	private int									dodge;
+	
+	private int									crit;
+	private float								critMultiple;
+	
+	private int 								speed;
+
+	
+	public FighterBase() {
+	}
+	
 	/**
-	 * 拷贝构造函数，通常用于战斗前的准备工作
-	 * @param f
+	 * 拷贝构造函数
+	 * @param bf
 	 */
-	public FighterBase( FighterBase f ) {
-		templet = f.getTemplet();		
-		position = f.position;		
-		hp = templet.getHpBase();
-		isAttack = f.isAttack;
-		buffManager = new BuffManager();
+	public FighterBase(FighterBase fighter) {
+		this.setName(fighter.getName());
+		this.position = fighter.getPosition();
+		this.hp = this.hpMax = fighter.getHpMax();
+		this.phyAttack = fighter.getPhyAttack();
+		this.phyDefend = fighter.getPhyDefend();
+		this.magicAttack = fighter.getMagicAttack();
+		this.magicDefend = fighter.getMagicDefend();
+		
+		this.dodge = fighter.getDodge();
+		this.crit = fighter.getCrit();
+		this.critMultiple = fighter.getCritMultiple();
+		this.setSpeed( fighter.getSpeed() );
+		this.setBottom( fighter.isBottom() );
+		
 	}
-	
-	public int getSpeed(){
-		return templet.getSpeed();
+
+	public SkillTemplet getSkillTemplet() {
+		return skillTemplet;
 	}
 
-//	public FighterBase() {
-//	}
+	public int getPhyAttack() {
+		return phyAttack;
+	}
 
-////	@Override
-////	public ErrorCode dress(long oldPropId, long newPropId) {
-////		
-////		
-////		IEquipment equipment = PropManager.getEquipmentById( newPropId );
-////		if( equipment == null ){
-////			return ErrorCode.PROP_NOT_FOUNTD;
-////		}
-////		
-////		if( canDress( equipment ) == ErrorCode.SUCCESS ){
-////			
-////		}
-////		
-////		return ErrorCode.SUCCESS;
-////	}
-//	
-//	/**
-//	 * 测试是否可以装备此道具
-//	 * @param equipment
-//	 * @return
-//	 */
-//	private ErrorCode canDress( IEquipment equipment ){
-//		EquipmentTemplet t = (EquipmentTemplet) equipment.getTemplet();
-//		if( t.getRequiredLevel() > getLevel() ){
-//			return ErrorCode.FIGHTER_LEVEL_NOT_ENOUGH;
-//		}
-//		
-//		//其他检测
-//		return ErrorCode.SUCCESS;
-//	}
+	public void setPhyAttack(int phyAttack) {
+		this.phyAttack = phyAttack;
+	}
 
-	
+	public int getPhyDefend() {
+		return phyDefend;
+	}
+
+	public void setPhyDefend(int phyDefend) {
+		this.phyDefend = phyDefend;
+	}
+
+	public int getMagicAttack() {
+		return magicAttack;
+	}
+
+	public void setMagicAttack(int magicAttack) {
+		this.magicAttack = magicAttack;
+	}
+
+	public int getMagicDefend() {
+		return magicDefend;
+	}
+
+	public void setMagicDefend(int magicDefend) {
+		this.magicDefend = magicDefend;
+	}
+
+	public byte getPosition() {
+		return position;
+	}
+
+	public void setPosition(byte position) {
+		this.position = position;
+	}
+
+	public int getHpMax() {
+		return hpMax;
+	}
+
+	public void setHpMax(int hpMax) {
+		this.hpMax = hpMax;
+	}
 
 	public int getHp() {
 		return hp;
@@ -100,137 +140,107 @@ public class FighterBase implements IFighter {
 		this.hp = hp;
 	}
 
-	public int getPhyAttack() {
-		return templet.getPhyAttackBase();
-	}
-
-
-	public BuffManager getBm() {
-		return buffManager;
-	}
-	
-	/**
-	 * 物防
-	 * @return
-	 */
-	public int getPhyDefend() {
-		return phyDefend;
-	}
-
-	/**
-	 * 战士是否位于战场的攻击方，也就是下方
-	 * @return
-	 */
-	public boolean isBottom() {
-		return isAttack;
-	}
-
-	public void setBottom(boolean isBottom) {
-		isAttack = isBottom;
-	}
-
-	public void setCanHit(boolean isCanHit) {
-		this.isCanHit = isCanHit;
-	}
-
 	public boolean isCanHit() {
 		return isCanHit;
 	}
 
-	public byte getPosition() {
-		return position;
+	public void setCanHit( boolean isCanHit) {
+		this.isCanHit = isCanHit;
 	}
 
-	public void setPosition( byte position ) {
-		this.position = position;
+	public boolean isChaos() {
+		return isChaos;
 	}
 
-	
-
-
-	public void setDodge(int dodge) {
-		this.dodge = dodge;
+	public void setChaos( boolean isChaos ) {
+		this.isChaos = isChaos;
 	}
 
-
-	/**
-	 * 闪避率
-	 * @return
-	 */
-	public int getDodge() {
-		return dodge;
+	public boolean isBottom() {
+		return isBottom;
 	}
 
-	
+	public void setBottom(boolean isBottom) {
+		this.isBottom = isBottom;
+	}
 
-	/**
-	 * 暴击
-	 * @return
-	 */
+	public BuffManager getBuffManager() {
+		return buffManager;
+	}
+
+	public void setSkillTemplet(SkillTemplet skillTemplet) {
+		this.skillTemplet = skillTemplet;
+	}
+
+	public boolean isDie() {
+		return hp <= 0;
+	}
+
+	public BuffManager getBm() {
+		return buffManager;
+	}
+
+	public boolean CanSkill( int currentRound ) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public Object toSimpleString() {
+		return "name=" + getName() + ", position=" + position;
+	}
+
 	public int getCrit() {
 		return crit;
-	}
-
-
-	public void setPhyDefend(int phyDefend) {
-		this.phyDefend = phyDefend;
 	}
 
 	public void setCrit(int crit) {
 		this.crit = crit;
 	}
 
-
-	public boolean isDie() {
-		return hp <= 0;
+	public float getCritMultiple() {
+		return critMultiple;
 	}
 
-	public SkillTemplet getSkillTemplet() {
-		return skillTemplet;
+	public void setCritMultiple(float critMultiple) {
+		this.critMultiple = critMultiple;
 	}
 
-	public String getName() {
+	public int getDodge() {
+		return dodge;
+	}
+
+	public void setDodge(int dodge) {
+		this.dodge = dodge;
+	}
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+
+	@Override
+	public String toString() {
+		return "FighterBase [phyAttack=" + phyAttack + ", phyDefend="
+				+ phyDefend + ", magicAttack=" + magicAttack + ", magicDefend="
+				+ magicDefend + ", position=" + position + ", hpMax=" + hpMax
+				+ ", hp=" + hp + ", isCanHit=" + isCanHit + ", isChaos="
+				+ isChaos + ", isBottom=" + isBottom + ", buffManager="
+				+ buffManager + ", skillTemplet=" + skillTemplet + ", dodge="
+				+ dodge + ", crit=" + crit + ", critMultple=" + critMultiple
+				+ ", speed=" + speed + "]";
+	}
+
+	public String getName(){
 		return name;
+		
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	
-
-	public boolean isChaos() {
-		return isChaos;
-	}
-
-	/**
-	 * @see #isChaos
-	 * @param isHunluan
-	 */
-	public void setChaos(boolean isHunluan) {
-		this.isChaos = isHunluan;
-	}
-
-
-	public String toSimpleString() {
-		return "name=" + name + ", position=" + position;
-		
-	}
-
-	public boolean CanSkill() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public float getCritMultiple() {
-		return critMultiple;
-	}
-
-	public FighterTempletBase getTemplet() {
-		return templet;
-	}
-
-
-	
 	
 }

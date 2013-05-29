@@ -90,7 +90,7 @@ public class ParseBattleSituation {
 
 	private void parseSkillAttack() {
 		byte attackerPos = data.get();
-		byte skillId = data.get();
+		int skillId = data.getInt();
 		byte count = data.get();//受到技能影响的战士数量
 		String output = attackerPos + "\t" + SkillTempletCfg.getSkillTempletById(skillId).getName() + "\t";
 		for( int i = 0; i < count; i++ ){

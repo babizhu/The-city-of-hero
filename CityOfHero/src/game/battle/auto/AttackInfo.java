@@ -126,7 +126,7 @@ public class AttackInfo {
 	 * @param crit
 	 */
 	public void setCrit( int crit ){
-		if( crit > 7 || crit < 1 ){
+		if( crit > 7 || crit < 0 ){
 			throw new IllegalArgumentException( "无效的暴击值:" + crit );
 		}
 		data &= ~CRIT;

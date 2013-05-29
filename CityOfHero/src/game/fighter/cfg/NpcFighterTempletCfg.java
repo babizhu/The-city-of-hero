@@ -17,7 +17,7 @@ import org.jdom2.input.SAXBuilder;
  *
  */
 public class NpcFighterTempletCfg {
-	private static final Map<Short,NpcFighterTemplet> npcFighterTemplets = new HashMap<Short, NpcFighterTemplet>();
+	private static final Map<Integer,NpcFighterTemplet> npcFighterTemplets = new HashMap<Integer, NpcFighterTemplet>();
 	
 	/**
 	 * 此配置表必须先于MissionTempletCfg初始化，因此无需提前手动调用
@@ -26,7 +26,7 @@ public class NpcFighterTempletCfg {
 		init();
 		
 	}
-	private static final String FILE = "resource/npc-fighter.xml";
+	private static final String FILE = "resource/npc.xml";
 	
 		
 	/**
@@ -39,13 +39,13 @@ public class NpcFighterTempletCfg {
 		try {
 			document = builder.build( FILE );
 			Element root = document.getRootElement();  
-			List<?> fighterList= root.getChildren( "fight" ); 
+			List<?> fighterList= root.getChildren( "npc" ); 
 			
 			for( int i = 0; i < fighterList.size(); i++ ){
 				NpcFighterTemplet ft = new NpcFighterTemplet( (Element)fighterList.get(i) );
-				NpcFighterTemplet temp = npcFighterTemplets.put( ft.getTempletId(), ft );
+				NpcFighterTemplet temp = npcFighterTemplets.put( ft.templetId, ft );
 				if( temp != null ){
-					throw new RuntimeException( "npc战士模板" + ft.getTempletId() + "重复了" );
+					throw new RuntimeException( "npc战士模板" + ft.templetId + "重复了" );
 				}
 				
 			}
@@ -64,13 +64,13 @@ public class NpcFighterTempletCfg {
 	 * @param templetId
 	 * @return
 	 */
-	public static NpcFighterTemplet getNpcCloneById( short templetId ){
+	public static NpcFighterTemplet getNpcById( int templetId ){
 		return npcFighterTemplets.get( templetId );
 	}
 	public static void main(String[] args) {
 		
-		short id = 2;
-		System.out.println( getNpcCloneById( id ) );
+		int id = 101101;
+		System.out.println( getNpcById( id ) );
 	}
 
 }

@@ -2,7 +2,6 @@ package game.battle.auto;
 
 import game.battle.BattleBase;
 import game.battle.IBattleUtil;
-import game.battle.Pet;
 import game.battle.buff.BuffRunPoint;
 import game.battle.formation.IFormation;
 import game.battle.formula.Formula;
@@ -93,7 +92,7 @@ public class AutoBattle extends BattleBase {
 	public void run() {
 		boolean isEnd = false;
 		while( !isEnd ){
-			pet();
+		
 			battleSituation.putRoundFlag();
 			for( FighterBase currentAttacker : allFighters ){
 				if( currentAttacker.isDie() ){
@@ -113,7 +112,7 @@ public class AutoBattle extends BattleBase {
 				//考虑混乱的状态
 				currentDefenders = getFormation( currentAttacker, currentAttacker.isChaos() );
 				
-				if( currentAttacker.CanSkill() ){
+				if( currentAttacker.CanSkill( currentRound ) ){
 					if( doSkillAttacks( currentAttacker, currentDefenders  ) ){
 						isEnd = true;
 						break;
@@ -214,6 +213,7 @@ public class AutoBattle extends BattleBase {
 		AttackInfo info = util.calcAttackInfo( attacker, defender, Formula.NormalAttackFormula, null );
 		battleSituation.putNormalAttack( attacker, defender, info );
 		
+//		System.out.println( attacker.getPosition() + " --> " + defender.getPosition() + " : " + info.getDamage() );
 		if( reduceHp( defender, info.getDamage() ) == true ){
 			return true;
 		}
@@ -241,7 +241,7 @@ public class AutoBattle extends BattleBase {
 	 * @param defender
 	 * @param defenderTeam
 	 * @return
-	 */
+	 
 	private boolean doBlockAndCounterAttack( FighterBase attacker, FighterBase defender ) {		
 		int damage = util.calcCounterAttackDamage( attacker, defender );
 		battleSituation.putCounterAttackDamage( (int) damage );//伤害值
@@ -254,7 +254,7 @@ public class AutoBattle extends BattleBase {
 			//pet.run( this );
 		}
 	}
-	
+	*/
 	/**
 	 * 对被攻击方进行扣hp等一系列操作<br>
 	 * 如果一方全军覆没，则返回true

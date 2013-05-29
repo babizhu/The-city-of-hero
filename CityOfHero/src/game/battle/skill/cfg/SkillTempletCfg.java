@@ -25,7 +25,7 @@ import org.jdom2.input.SAXBuilder;
  */
 public class SkillTempletCfg {
 	
-private static final Map<Byte,SkillTemplet> skillTemplets = new HashMap<Byte, SkillTemplet>();
+private static final Map<Integer,SkillTemplet> skillTemplets = new HashMap<Integer, SkillTemplet>();
 	
 	/**
 	 * 此配置表必须先于NpcFighterTempletCfg初始化（每个npc都有相应的技能），因此无需提前手动调用
@@ -50,7 +50,7 @@ private static final Map<Byte,SkillTemplet> skillTemplets = new HashMap<Byte, Sk
 			
 			for( int i = 0; i < fighterList.size(); i++ ){
 				Element element = (Element) fighterList.get( i );
-				byte id = Byte.parseByte( element.getChildText( "id" ) );
+				int id = Integer.parseInt( element.getChildText( "id" ) );
 				SkillTemplet templet = new SkillTemplet( id );
 				templet.setName( element.getChildText( "name" ) );
 				templet.setDesc( element.getChildText( "desc" ) );
@@ -127,7 +127,7 @@ private static final Map<Byte,SkillTemplet> skillTemplets = new HashMap<Byte, Sk
 	 * @param templetId
 	 * @return
 	 */
-	public static SkillTemplet getSkillTempletById( byte templetId ){
+	public static SkillTemplet getSkillTempletById( int templetId ){
 		return skillTemplets.get( templetId );
 	}
 

@@ -55,8 +55,8 @@ public class BattleSituation  {
 	 * @param attacker
 	 * @param skillId
 	 */
-	public void putSkillAttackPrefix( FighterBase attacker, byte skillId, byte count ) {
-		situation.put( AttackType.SKILL_ATTACK.toNumber() ).put( attacker.getPosition() ).put( skillId ).put( count );
+	public void putSkillAttackPrefix( FighterBase attacker, int skillId, byte count ) {
+		situation.put( AttackType.SKILL_ATTACK.toNumber() ).put( attacker.getPosition() ).putInt( skillId ).put( count );
 	}
 
 	/**
