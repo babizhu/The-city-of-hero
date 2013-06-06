@@ -35,17 +35,17 @@ class Client implements Runnable{
 public class EventTestMain {
 	public static void main(String[] args) throws InterruptedException {
 		int count = 10000;//发包数量
-		int threadCount = 20;//线程数量
-		ExecutorService exec = Executors.newCachedThreadPool();
-		long begin = System.nanoTime();
-		for( int i = 0; i < threadCount; i++ ){
-			BaseEventTest p = new CUserLoginEventTest( count );
-			exec.execute( new Client( p ) );
-		}
-		exec.shutdown();
-		exec.awaitTermination( 100, TimeUnit.DAYS );
-		
-		System.out.println("用时" + (System.nanoTime() - begin) / 1000000000f + "秒");
-		System.exit(0);
+        int threadCount = 20;//线程数量
+        ExecutorService exec = Executors.newCachedThreadPool();
+        long begin = System.nanoTime();
+        for( int i = 0; i < threadCount; i++ ){
+            BaseEventTest p = new CUserLoginEventTest( count );
+            exec.execute( new Client( p ) );
+        }
+        exec.shutdown();
+        exec.awaitTermination( 100, TimeUnit.DAYS );
+
+        System.out.println("用时" + (System.nanoTime() - begin) / 1000000000f + "秒");
+        System.exit(0);
 	}
 }

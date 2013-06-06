@@ -31,13 +31,13 @@ import define.SystemCfg;
 public class GameServer extends Server{
 
 	/**
-	 * @param address
-	 * @param port
-	 * @param handler
+	 * @param address       地址
+	 * @param port          端口
+	 * @param handler       处理句柄
 	 * @throws UnknownHostException
 	 * @throws IOException
 	 */
-	public GameServer( InetAddress address, int port, IHandler handler ) throws UnknownHostException, IOException {
+	public GameServer( InetAddress address, int port, IHandler handler ) throws IOException {
 		super(address, port, handler);
 		setFlushmode( FlushMode.ASYNC );
 		setIdleTimeoutMillis( 1000000000 );
@@ -62,10 +62,8 @@ public class GameServer extends Server{
 		System.out.println("编码集1= "+Charset.defaultCharset() );
 
 		System.out.println( UtilBase.secondsToDateStr( SystemTimer.currentTimeSecond() ) + " The city of hero start now..." );
-        System.out.println( UtilBase.secondsToDateStr( SystemTimer.currentTimeSecond() ) + " game version: " + SystemCfg.VERSION );        
-		
-        
-//        InetAddress address = InetAddress.getByName( null );
+        System.out.println( UtilBase.secondsToDateStr( SystemTimer.currentTimeSecond() ) + " game version: " + SystemCfg.VERSION );
+
 		
 		GameServer server = new GameServer( null, SystemCfg.PORT, new GameHandler() );
 		server.readAllCfg();
