@@ -160,7 +160,8 @@ public class Formation implements IFormation{
 //				}
 //			}			
 //		}
-		int col = attacker.getPosition() % TOTAL_COUNT;
+		int col = getCol( attacker.getPosition() );
+		
 		List<FighterBase> colList = getFightersByCol( col );
 		if( !colList.isEmpty() ){
 			return colList.get( 0 );//取前面一个
@@ -253,38 +254,7 @@ public class Formation implements IFormation{
 		ret.add( minHp );
 		return ret;
 	}
-	/**
-	 *  攻击目标判定的"行"顺序：
-	 *  
-	 *	1、员工首先攻击自己同一横排的最前列对手；
-	 *	2、当自己的同一横排无对手时，首先攻击相邻排的对手；
-	 *	3、当拥有两个相邻排的对手时，首先攻击上排的对手（当自己处于中间横排时，首先攻击上方的对手）；
-
-	 * @param row
-	 * @return
-	 */
-
-//	private int[] getAttackSequenceRow( int row ){
-//		int[] remain = new int[COUNT_PER_ROW];
-//		remain[0] = row;
-//		switch( row ){
-//			case 0:
-//				remain[1] = 1;
-//				remain[2] = 2;
-//				break;
-//			case 1:
-//				remain[1] = 0;
-//				remain[2] = 2;
-//				break;
-//			default:
-//				remain[1] = 1;
-//				remain[2] = 0;
-//				break;
-//		}
-//		return remain;
-//
-//	}
-//	
+	
 	private int getRow(byte position) {
 		int row = position / COUNT_PER_ROW;
 		row = row < COUNT_PER_ROW ? row : row - COUNT_PER_ROW;
@@ -292,7 +262,7 @@ public class Formation implements IFormation{
 	}
 	
 	private int getCol( byte position ) {
-		return position % TOTAL_COUNT;
+		return position % COUNT_PER_ROW;
 	}
 	
 	@Override
@@ -311,7 +281,8 @@ public class Formation implements IFormation{
 			return getFightersByNormal( attacker );
 		case ALL:
 			return getAllFighters();
-			
+		case NEXT:
+			return getNext();
 		default:
 			break;
 		}
@@ -320,6 +291,11 @@ public class Formation implements IFormation{
 	
 	
 	
+
+	private List<FighterBase> getNext() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public String toString(){

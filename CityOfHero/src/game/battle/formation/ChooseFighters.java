@@ -15,7 +15,7 @@ public enum ChooseFighters {
 	 */
 	CROSS,
 	MIN_HP, 
-	ALL;
+	ALL, NEXT;
 	public static void main(String[] args) {
 	}
 }

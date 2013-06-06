@@ -27,23 +27,35 @@ public class SendBattleSituation extends EventBase {
 	IFormation aFormation;
 	IFormation dFormation;
 	
-	void init(){
+	void init( short missionId ){
 		List<FighterBase> attackers = new ArrayList<FighterBase>();		
+		
 		FighterBase fighter = new NpcFighter( NpcFighterTempletCfg.getNpcById( 101101 ) );
 		attackers.add( fighter );
-		fighter = new NpcFighter( NpcFighterTempletCfg.getNpcById( 101102 ) );
-		fighter.setPosition( (byte) 3 );
+		
+		fighter = new NpcFighter( NpcFighterTempletCfg.getNpcById( 101108 ) );
+		fighter.setPosition( (byte) 5 );
 		attackers.add( fighter );
+		
+		fighter = new NpcFighter( NpcFighterTempletCfg.getNpcById( 101109 ) );
+		attackers.add( fighter );
+		fighter.setPosition( (byte) 6 );
+		
+		fighter = new NpcFighter( NpcFighterTempletCfg.getNpcById( 101102 ) );
+		fighter.setPosition( (byte) 3 );		
+		attackers.add( fighter );
+		
 		aFormation = new Formation( attackers, true, null );
 //	
-		short missionId = 2;
+		
 		//aFormation = MissionTempletCfg.getTempletById( missionId ).getFormationClone( 0 );
-		dFormation = MissionTempletCfg.getTempletById( missionId ).getFormationCloneByWave( 0 );
+		dFormation = MissionTempletCfg.getTempletById( missionId ).getFormationCloneByWave( 2 );
 	}
 	@Override
 	public void run(UserInfo user, ByteBuffer buf) throws IOException {
-		
-		init();
+		short missionId = buf.getShort();
+		init( missionId );
+	
 		
 		AutoBattle battle = new AutoBattle( aFormation, dFormation );
 		battle.run();
@@ -53,7 +65,7 @@ public class SendBattleSituation extends EventBase {
 		buffer.put( content );
 		System.out.println( "战况内容的长度为：" + content.position() );
 		sendPackage( user.getCon(), buffer );
-		init();		
+		init( missionId );		
 		new ParseBattleSituation( aFormation, dFormation, battle.getBattleSituation() ).parse();
 	}
 	

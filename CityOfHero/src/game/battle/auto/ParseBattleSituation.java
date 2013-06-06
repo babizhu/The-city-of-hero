@@ -103,7 +103,7 @@ public class ParseBattleSituation {
 				
 				FighterAttribute fa = FighterAttribute.fromNumber( data.get() );
 				output += fa + "\t";
-				if( fa == FighterAttribute.SUB_HP ){
+				if( fa == FighterAttribute.HEALTH_DOWN ){
 					AttackInfo info = new AttackInfo( data.get() );
 					isHit = info.isHit();
 					if( isHit ){

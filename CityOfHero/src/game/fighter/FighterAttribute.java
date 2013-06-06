@@ -7,7 +7,7 @@ import java.util.Map;
 
 public enum FighterAttribute {
 
-	SUB_HP(1){
+	HEALTH_DOWN(1){
 
 		@Override
 		public void run(FighterBase fighter, int numToChange) {
@@ -15,7 +15,7 @@ public enum FighterAttribute {
 		}
 		
 	},
-	ADD_HP(2) {
+	HEALTH_UP(2) {
 		@Override
 		public
 		void run(FighterBase fighter, int numToChange) {

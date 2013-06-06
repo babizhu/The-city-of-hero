@@ -8,16 +8,16 @@
 		<name>落井下石</name>
 		<desc>攻击对方血量最少的战士，对己方所有战士增加100血</desc>
 		<friend>ALL</friend>
-		<friend_effect>ADD_HP,DirectOutputFormula,100</friend_effect>
+		<friend_effect>HEALTH_UP,DirectOutputFormula,100</friend_effect>
 		<enemy>MIN_HP</enemy>
-		<enemy_effect>SUB_HP,SkillAttackFormula,11</enemy_effect>
+		<enemy_effect>HEALTH_DOWN,SkillAttackFormula,11</enemy_effect>
 	</skill>
 	<skill>
 		<id>2</id>
 		<name>飞龙在天</name>
 		<desc>单体攻击</desc>
 		<enemy>NORMAL_ATTACK</enemy>
-		<enemy_effect>SUB_HP,SkillAttackFormula,6</enemy_effect>
+		<enemy_effect>HEALTH_DOWN,SkillAttackFormula,6</enemy_effect>
 		<buffId>0</buffId>
 		<buffFormula></buffFormula>
 	</skill>
@@ -26,13 +26,13 @@
 		<name>杀破狼</name>
 		<desc>进行十字攻击</desc>
 		<enemy>CROSS</enemy>
-		<enemy_effect>SUB_HP,SkillAttackFormula,2</enemy_effect>
+		<enemy_effect>HEALTH_DOWN,SkillAttackFormula,2</enemy_effect>
 	</skill>
 	<skill>
 		<id>4</id>
 		<name>妙手回春</name>
 		<desc>恢复本方战士攻击者的25%的hp</desc>
 		<friend>ALL</friend>
-		<friend_effect>ADD_HP,HpFormula,1,0.25</friend_effect>
+		<friend_effect>HEALTH_UP,HpFormula,1,0.25</friend_effect>
 	</skill>
 </skills>
