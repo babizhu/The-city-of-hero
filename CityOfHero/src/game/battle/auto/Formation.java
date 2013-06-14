@@ -101,7 +101,7 @@ public class Formation implements IFormation{
 
     /**
      * 对防守方进行一系列改造，包括<br>
-     * 所有位置+9(九宫格战斗)<br>
+     * 所有位置+8(手机战斗)<br>
      * 防守方镜面翻转<br>
      * 重新按照位置信息排序<br>
      * 这个代码就应该在这里执行，而不应该放到BaseBattle中，因为这个是和阵型密切相关的
@@ -283,14 +283,14 @@ public class Formation implements IFormation{
      * @param all           按出手顺序排列的所有战士
      * @return              下一个出手的战士列表
      */
-    private List<FighterBase> getFightByNext( FighterBase attacker, List<FighterBase> all) {
+    private List<FighterBase> getFightByNext( FighterBase attacker, List<FighterBase> all ) {
         int pos = all.indexOf( attacker );
 
         List<FighterBase> ret = new ArrayList<FighterBase>();
         while( true ){
             pos++;
             FighterBase f = all.get( pos % all.size() );
-            if( f.getHp() > 0 && fighters.contains( f ) ){
+            if( !f.isDie() && fighters.contains( f ) ){
                 ret.add( f );
                 return ret;
             }
