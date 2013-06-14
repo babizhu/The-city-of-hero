@@ -107,8 +107,8 @@ public enum Event {
 	 */
 	public static void main(String[] args) {
 		Formatter f = new Formatter( System.out );
-		f.format( "%-15s %-100s %-10s \n", "包号", "类别", "功能说明" );
-		f.format( "%-15s %-100s %-10s \n", "－－", "－－", "－－－－" );
+		f.format( "%-15s %-100s %-10s %n", "包号", "类别", "功能说明" );
+		f.format( "%-15s %-100s %-10s %n", "－－", "－－", "－－－－" );
 		for( Event p : values() ){
 			
 			Class<?> c = p.eventInstance.getClass();
@@ -116,7 +116,7 @@ public enum Event {
 			String s = null;
 			s = (desc == null) ? "" : desc.desc();
 			String className = c.getName().substring( c.getName().lastIndexOf(".") + 1 );
-			f.format("%-8s %-40s %-10s \n", p.eventInstance.getEventId(), className, s );
+			f.format("%-8s %-40s %-10s %n", p.eventInstance.getEventId(), className, s );
 		}
 		System.out.println( "--------------------------HTML---------------------------------");
 		StringBuilder html = new StringBuilder( "<table><tr><td>包号</td><td>类别</td><td>功能说明</td></tr><tr>" );

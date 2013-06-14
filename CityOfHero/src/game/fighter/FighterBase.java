@@ -61,7 +61,7 @@ public class FighterBase{
 	
 	/**
 	 * 拷贝构造函数
-	 * @param bf
+	 * @param fighter
 	 */
 	public FighterBase(FighterBase fighter) {
 		this.setName(fighter.getName());
@@ -180,7 +180,7 @@ public class FighterBase{
 		return buffManager;
 	}
 
-	public boolean CanSkill( int currentRound ) {
+	public boolean canSkill() {
 		// TODO Auto-generated method stub
 		return false;
 	}

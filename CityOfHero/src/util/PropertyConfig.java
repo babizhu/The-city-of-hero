@@ -10,9 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public abstract class PropertyConfig {
-	private static final  Logger logger = LoggerFactory.getLogger( PropertyConfig.class );
-	protected  String configName;
-	private  Properties p = null;
+	private static final  Logger    logger = LoggerFactory.getLogger( PropertyConfig.class );
+	protected                       String configName;
+	private                         Properties p = null;
 	
 //	public String getConfigName() {
 //		return configName;
@@ -27,13 +27,15 @@ public abstract class PropertyConfig {
 				InputStream input = new FileInputStream( configName );
 				p.load( input);
 				this.configName = configName;
+                input.close();
 			} catch (FileNotFoundException e) {
 				logger.error("",e);
 				this.configName = null;
 			} catch (IOException e) {
 				logger.error("",e);
 				this.configName = null;
-			}			
+			}
+
 		
 	}
 	

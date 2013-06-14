@@ -37,7 +37,7 @@ public class GameServer extends Server{
 	 * @throws UnknownHostException
 	 * @throws IOException
 	 */
-	public GameServer( InetAddress address, int port, IHandler handler ) throws IOException {
+    private GameServer(InetAddress address, int port, IHandler handler) throws IOException {
 		super(address, port, handler);
 		setFlushmode( FlushMode.ASYNC );
 		setIdleTimeoutMillis( 1000000000 );
@@ -51,6 +51,7 @@ public class GameServer extends Server{
 			PropTempletCfg.init();
 			TaskTempletCfg.init();
 			MissionTempletCfg.init();
+            System.out.println( "配置文件读取完毕\n" );
 		}catch( Exception e ){
 			e.printStackTrace();
 			System.exit(0);
@@ -64,8 +65,8 @@ public class GameServer extends Server{
 		System.out.println( UtilBase.secondsToDateStr( SystemTimer.currentTimeSecond() ) + " The city of hero start now..." );
         System.out.println( UtilBase.secondsToDateStr( SystemTimer.currentTimeSecond() ) + " game version: " + SystemCfg.VERSION );
 
-		
-		GameServer server = new GameServer( null, SystemCfg.PORT, new GameHandler() );
+		InetAddress address = null;
+		GameServer server = new GameServer( address, SystemCfg.PORT, new GameHandler() );
 		server.readAllCfg();
 
 		

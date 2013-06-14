@@ -86,7 +86,7 @@ public class AutoBattleUtil implements IBattleUtil {
 			damage *= attacker.getCritMultiple();
 		}
 		info.setCrit( crit?1:0 );
-		info.SetHit( isHit );
+		info.setHit(isHit);
 		
 		damage = defender.getBm().run( damage, BuffRunPoint.AFTER_DEFENDING );
 		info.setDamage( damage );

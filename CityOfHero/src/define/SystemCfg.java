@@ -27,17 +27,17 @@ public class SystemCfg {
 	/**
 	 * 游戏区id
 	 */
-	public  static int 	GAME_DISTRICT;
+	public  static int 	        GAME_DISTRICT;
 	
 	/**
 	 * 端口
 	 */
-	public static  int 	PORT;
+	public static int  	        PORT;
 	
 	/**
 	 * 系统版本
 	 */
-	public static String	VERSION;
+	public static String	    VERSION;
 	
 	static{
 		GAME_DISTRICT = 0;

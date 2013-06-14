@@ -5,7 +5,10 @@ import game.events.EventBase;
 import java.io.IOException;
 import java.nio.BufferUnderflowException;
 import java.nio.channels.ClosedChannelException;
+import java.text.MessageFormat;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xsocket.MaxReadSizeExceededException;
 import org.xsocket.connection.ConnectionUtils;
 import org.xsocket.connection.IConnectHandler;
@@ -23,10 +26,11 @@ import core.GameMainLogic;
 public class GameHandler implements IDataHandler, IConnectHandler,
 		IIdleTimeoutHandler, IDisconnectHandler {
 
+    Logger logger = LoggerFactory.getLogger( GameHandler.class);
 	/**
 	 * 除去包头包尾允许接收的最大的包长度
 	 */
-	private static final int PACKAGE_LEN = 8192;
+	private static final int    PACKAGE_LEN = 8192;
 	
 	private final GameMainLogic gameLogic = GameMainLogic.getInstance();
 
@@ -64,7 +68,7 @@ public class GameHandler implements IDataHandler, IConnectHandler,
 		short packageNo = 0;
 		short dataLength = 0;
 		byte data[] = null;
-		con = ConnectionUtils.synchronizedConnection(con);
+		con = ConnectionUtils.synchronizedConnection( con );
 		// synchronized (con) {
 		int available = con.available();
 
@@ -76,7 +80,7 @@ public class GameHandler implements IDataHandler, IConnectHandler,
 				packageNo = con.readShort();
 				dataLength = con.readShort();
 				if (dataLength < 0 || dataLength > PACKAGE_LEN) {
-					System.err.println( "网络错误，dataLength = " + dataLength );
+                    logger.info(MessageFormat.format("{0}网络错误，dataLength = {1}", con.getRemoteAddress(), dataLength));
 					con.close();
 					return true;
 				}
@@ -91,7 +95,6 @@ public class GameHandler implements IDataHandler, IConnectHandler,
 			if (!checkInputData(head, foot)) {
 				con.close();
 				return true;
-				// TODO 调用某个退出函数
 			}
 
 			gameLogic.packageRun( con, packageNo, data );

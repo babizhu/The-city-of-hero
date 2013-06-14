@@ -112,7 +112,7 @@ public class AutoBattle extends BattleBase {
 				//考虑混乱的状态
 				currentDefenders = getFormation( currentAttacker, currentAttacker.isChaos() );
 				
-				if( currentAttacker.CanSkill( currentRound ) ){
+				if( currentAttacker.canSkill() ){
 					if( doSkillAttacks( currentAttacker, currentDefenders  ) ){
 						isEnd = true;
 						break;
@@ -138,9 +138,9 @@ public class AutoBattle extends BattleBase {
 	private boolean doSkillAttacks( FighterBase attacker, IFormation currentDefenderTeam ) {
 		
 		SkillTemplet templet = attacker.getSkillTemplet();
-		
-		List<FighterBase> enemys = currentDefenderTeam.getFighterOnEffect( attacker, templet.getEnemys() );
-		List<FighterBase> friends = getFormation( attacker, true ).getFighterOnEffect( attacker, templet.getFriends() );
+
+		List<FighterBase> enemys = currentDefenderTeam.getFighterOnEffect( attacker, templet.getEnemys(), allFighters );
+		List<FighterBase> friends = getFormation( attacker, true ).getFighterOnEffect( attacker, templet.getFriends(), allFighters );
 		byte count = (byte) ((enemys == null ? 0 : enemys.size()) + (friends == null ? 0 : friends.size()));
 		
 		battleSituation.putSkillAttackPrefix( attacker, templet.getId(), count );
@@ -202,7 +202,7 @@ public class AutoBattle extends BattleBase {
 	/**
 	 * 普通攻击
 	 * @param attacker		当前攻击者
-	 * @param defenderTeam	当前的防守队伍
+	 * @param currentDefender	当前的防守队伍
 	 * @return
 	 */
 	private boolean doNormalAttack( FighterBase attacker, IFormation currentDefender ) {

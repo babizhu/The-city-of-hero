@@ -92,23 +92,24 @@ public class ParseBattleSituation {
 		byte attackerPos = data.get();
 		int skillId = data.getInt();
 		byte count = data.get();//受到技能影响的战士数量
-		String output = attackerPos + "\t" + SkillTempletCfg.getSkillTempletById(skillId).getName() + "\t";
+        StringBuilder output = new StringBuilder( attackerPos + "\t" + SkillTempletCfg.getSkillTempletById(skillId).getName() + "\t" );
+//		String output = ;
 		for( int i = 0; i < count; i++ ){
 			byte defenderPos = data.get();
-			output += defenderPos + "\t";
+			output.append( defenderPos + "\t" );
 			FighterBase defender = getFighterByPos( defenderPos );
 			byte effectCount = data.get();
 			boolean isHit = true;
 			for( int n = 0; n < effectCount; n++ ){
 				
 				FighterAttribute fa = FighterAttribute.fromNumber( data.get() );
-				output += fa + "\t";
+                output.append( fa + "\t" );
 				if( fa == FighterAttribute.HEALTH_DOWN ){
 					AttackInfo info = new AttackInfo( data.get() );
 					isHit = info.isHit();
 					if( isHit ){
 						int damage = data.getInt();
-						output += damage + "\t";
+                        output.append( damage + "\t" );
 						defender.setHp( defender.getHp() - damage );
 						if( getFriend( defender ).isAllDie() ){
 							return;
@@ -124,12 +125,12 @@ public class ParseBattleSituation {
 				else{
 					int numToChange = data.getInt();
 					fa.run(defender, numToChange);
-					output += numToChange + "\t";
+                    output.append( numToChange + "\t" );
 				}
 				
 			}
 		}
-		System.out.println( output );
+		System.out.println( output.toString() );
 		
 	}
 

@@ -32,6 +32,8 @@ public class SendPackage {
 		case 201:
 			data = login();
 			break;
+        default:
+            break;
 		}
 		if( data == null ){
 			return null;

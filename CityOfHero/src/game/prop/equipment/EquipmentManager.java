@@ -54,7 +54,7 @@ public class EquipmentManager implements IPropManager {
 		long id = unit.getPropId();
 		Equipment equipment = equipments.get( id );
 		if( equipment == null ){
-			return ErrorCode.PROP_NOT_FOUNTD;
+			return ErrorCode.PROP_NOT_FOUND;
 		}
 		return db.removeEquipment( equipment );
 	}
@@ -86,7 +86,7 @@ public class EquipmentManager implements IPropManager {
 	public ErrorCode levelUp( long id ){
 		Equipment e = equipments.get( id );
 		if( e == null ){
-			return ErrorCode.PROP_NOT_FOUNTD;
+			return ErrorCode.PROP_NOT_FOUND;
 		}
 		return ErrorCode.SUCCESS;
 	}

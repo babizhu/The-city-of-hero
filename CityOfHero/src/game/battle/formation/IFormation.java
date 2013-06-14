@@ -23,14 +23,18 @@ public interface IFormation {
 	
 	/**
 	 * 根据类型来得到相应的受到效果的战士列表
-	 * @param attacker	攻方
-	 * @return
+	 *
+     * @param attacker      攻方
+     * @param type          选择类型
+     * @param all           按出手速度排序的所有的战士列表
+     * @return
 	 */
-	List<FighterBase> getFighterOnEffect( FighterBase attacker, ChooseFighters type );
+	List<FighterBase> getFighterOnEffect(FighterBase attacker, ChooseFighters type, List<FighterBase> all);
 	
 	/**
 	 * 是否所有的战士都已经死亡
-	 * @return
+     * @return
+     *          true for all death
 	 */
 	boolean isAllDie();
 	

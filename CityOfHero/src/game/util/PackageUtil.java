@@ -149,15 +149,15 @@ public class PackageUtil {
 	 */
 	public static void printAllPakcets( EventBase[] packages ) {
 		Formatter f = new Formatter(System.out);
-		f.format("%-15s %-127s %-150s \n", "包号", "类别", "功能说明");
-		f.format("%-15s %-127s %-150s \n", "－－", "－－", "－－－－");
+		f.format("%-15s %-127s %-150s %n", "包号", "类别", "功能说明");
+		f.format("%-15s %-127s %-150s %n", "－－", "－－", "－－－－");
 		for ( EventBase ap : packages ) {
 			if( ap != null ){
 				Class<?> c = ap.getClass();
 				EventDescrip desc = c.getAnnotation(EventDescrip.class);
 				String s = null;
 				s = (desc == null) ? "" : desc.desc();
-				f.format("%-8s %-50s %-150s \n", ap.getEventId(), c.getName(),	s );
+				f.format("%-8s %-50s %-150s %n", ap.getEventId(), c.getName(),	s );
 			}
 		}
 		f.close();

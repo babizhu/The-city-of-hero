@@ -22,7 +22,7 @@ public class PartnerManager {
 	//private IFormation							formation = null;
 	private PartnerDataProvider					db = PartnerDataProvider.getInstance();
 	
-	public PartnerManager(UserInfo user) {
+	public PartnerManager( UserInfo user ) {
 		super();
 		//this.user = user;
 		propManager = user.getPropManager();
@@ -34,7 +34,7 @@ public class PartnerManager {
 	/**
 	 * 穿装备
 	 * @param parterId
-	 * @param equipmentId
+	 * @param propId
 	 * @return
 	 */
 	ErrorCode dress( long parterId, long propId ){
@@ -46,7 +46,7 @@ public class PartnerManager {
 		
 		EquipmentBase e = propManager.getEquipmentById( propId );
 		if( e == null ){
-			return ErrorCode.PROP_NOT_FOUNTD;
+			return ErrorCode.PROP_NOT_FOUND;
 		}
 
 		ErrorCode code = p.dress( e );

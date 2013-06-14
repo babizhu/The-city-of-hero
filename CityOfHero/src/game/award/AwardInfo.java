@@ -41,7 +41,8 @@ public class AwardInfo implements ITransformStream {
 	public void setAward(AwardContent award) {
 		this.award = award;
 	}
-	public short getPropId() {
+
+    public short getPropId() {
 		return propId;
 	}
 	public void setPropId(short propId) {

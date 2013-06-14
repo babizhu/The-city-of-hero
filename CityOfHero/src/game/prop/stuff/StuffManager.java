@@ -63,17 +63,14 @@ public class StuffManager implements IPropManager  {
 	 */
 	public ErrorCode add( PropUnit unit ){
 		short templetId = unit.getTemplet().getId();
-		Integer count = stuffs.get( templetId );
-		boolean isNew = (count==null);
-		
-		ErrorCode code = db.changeStuff( templetId, unit.getCount(), user.getName(), isNew );
-		if( code == ErrorCode.SUCCESS ){
-			if( !isNew ){
-				count += unit.getCount();
-			}
-			stuffs.put( templetId, unit.getCount() );
-		}
-		return code;
+        int count = unit.getCount();
+        boolean isNew = stuffs.containsKey( templetId );
+        if( !isNew ){
+            count += stuffs.get( templetId );
+        }
+        stuffs.put( templetId, count );
+
+        return db.changeStuff( templetId, count, user.getName(), isNew );
 	}
 	
 	@Override
@@ -82,7 +79,7 @@ public class StuffManager implements IPropManager  {
 		short templetId = unit.getTemplet().getId();
 		Integer c = stuffs.get( templetId );
 		if( c == null ){
-			return ErrorCode.PROP_NOT_FOUNTD;
+			return ErrorCode.PROP_NOT_FOUND;
 		}
 		if( c < needCount ){
 			return ErrorCode.PROP_NOT_ENOUGH;

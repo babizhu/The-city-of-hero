@@ -47,7 +47,6 @@ public class AttackInfo {
 	/**
 	 * 用于解析战况的时候使用
 	 * @param data
-	 * @param damage
 	 */
 	public AttackInfo( byte data ) {
 		super();
@@ -74,9 +73,8 @@ public class AttackInfo {
 	
 	/**
 	 * @see #HIT
-	 * @return
 	 */
-	public void SetHit( boolean isHit ){
+	public void setHit( boolean isHit ){
 		setBitValue( HIT, isHit );
 		
 	}
@@ -89,7 +87,7 @@ public class AttackInfo {
 		return getBitValue( BLOCK );
 	}
 	
-	public void SetBlock( boolean isBlock ){
+	public void setBlock( boolean isBlock ){
 		setBitValue( BLOCK, isBlock );
 	}
 	

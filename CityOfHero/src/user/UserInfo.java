@@ -197,8 +197,7 @@ public class UserInfo {
 	/**
 	 * 修改玩家的金币数量
 	 * @param change			增加为正数，减少为负数
-	 * @param funcName			调用的函数
-	 * 
+	 *
 	 * @return 					< 0		扣除失败<br>
 	 * 							>=0		当前拥有的金币<br>
 	 * 
@@ -254,6 +253,7 @@ public class UserInfo {
 		case CASH:
 			result = this.setCash( award.getNumber() );
 		default:
+
 			break;
 		}
 		if( result == -1 ){
