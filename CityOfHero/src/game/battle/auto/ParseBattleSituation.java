@@ -99,17 +99,17 @@ public class ParseBattleSituation {
 			output.append( defenderPos + "\t" );
 			FighterBase defender = getFighterByPos( defenderPos );
 			byte effectCount = data.get();
-			boolean isHit = true;
+			boolean isHit;
 			for( int n = 0; n < effectCount; n++ ){
 				
 				FighterAttribute fa = FighterAttribute.fromNumber( data.get() );
-                output.append( fa + "\t" );
+                output.append(fa).append("\t");
 				if( fa == FighterAttribute.HEALTH_DOWN ){
 					AttackInfo info = new AttackInfo( data.get() );
 					isHit = info.isHit();
 					if( isHit ){
 						int damage = data.getInt();
-                        output.append( damage + "\t" );
+                        output.append(damage).append("\t");
 						defender.setHp( defender.getHp() - damage );
 						if( getFriend( defender ).isAllDie() ){
 							return;
@@ -125,7 +125,7 @@ public class ParseBattleSituation {
 				else{
 					int numToChange = data.getInt();
 					fa.run(defender, numToChange);
-                    output.append( numToChange + "\t" );
+                    output.append(numToChange).append("\t");
 				}
 				
 			}
