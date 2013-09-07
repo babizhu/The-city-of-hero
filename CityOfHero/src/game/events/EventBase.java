@@ -1,14 +1,12 @@
 package game.events;
 
 import game.events.all.user.UserLoginEvent;
+import org.xsocket.connection.INonBlockingConnection;
+import user.UserInfo;
+import util.ErrorCode;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
-
-import org.xsocket.connection.INonBlockingConnection;
-
-import user.UserInfo;
-import util.ErrorCode;
 
 
 /**

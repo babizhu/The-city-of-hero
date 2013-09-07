@@ -1,13 +1,12 @@
 package experiment;
 
-import game.events.EventBase;
 import game.events.Event;
+import game.events.EventBase;
+import util.UtilBase;
 
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.ByteBuffer;
-
-import util.UtilBase;
 
 /**
  * 

@@ -1,16 +1,15 @@
 package game.events.all;
-import static org.junit.Assert.assertEquals;
+
+import define.SystemCfg;
+import org.junit.Test;
+import org.xsocket.connection.BlockingConnection;
+import org.xsocket.connection.IBlockingConnection;
+import util.ErrorCode;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-import org.junit.Test;
-import org.xsocket.connection.BlockingConnection;
-import org.xsocket.connection.IBlockingConnection;
-
-import util.ErrorCode;
-
-import define.SystemCfg;
+import static org.junit.Assert.assertEquals;
 
 public class UserExitEventTest extends BaseEventTest {
 

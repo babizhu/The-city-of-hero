@@ -1,18 +1,5 @@
 package experiment.db;
 
-import java.lang.management.ManagementFactory;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
-
-import javax.management.JMException;
-
-import util.db.DatabaseUtil;
-
 import com.alibaba.druid.sql.ast.SQLStatement;
 import com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser;
 import com.alibaba.druid.sql.dialect.mysql.visitor.MySqlOutputVisitor;
@@ -20,6 +7,12 @@ import com.alibaba.druid.sql.parser.SQLStatementParser;
 import com.alibaba.druid.stat.JdbcStatManager;
 import com.alibaba.druid.stat.JdbcTraceManager;
 import com.alibaba.druid.util.JMXUtils;
+import util.db.DatabaseUtil;
+
+import java.lang.management.ManagementFactory;
+import java.sql.*;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * 测试stat记录功能

@@ -1,7 +1,9 @@
 package game.events;
 
 
-import game.events.all.*;
+import game.events.all.DeadLockTestEvent;
+import game.events.all.SendBattleSituation;
+import game.events.all.SystemSendErrorCodeEvent;
 import game.events.all.message.SendMsgEvent;
 import game.events.all.prop.EquipmentLevelUpEvent;
 import game.events.all.task.TaskAcceptAwardEvent;
@@ -11,14 +13,13 @@ import game.events.all.task.TaskGetEvent;
 import game.events.all.user.UserCreateEvent;
 import game.events.all.user.UserExitEvent;
 import game.events.all.user.UserLoginEvent;
+import user.UserInfo;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Formatter;
 import java.util.HashMap;
 import java.util.Map;
-
-import user.UserInfo;
 
 /**
  * 100以内为系统保留

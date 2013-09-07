@@ -1,19 +1,16 @@
 package client.events.event;
 
 
-
+import define.SystemCfg;
 import game.events.Event;
+import org.xsocket.connection.BlockingConnection;
+import org.xsocket.connection.IBlockingConnection;
+import user.UserInfo;
+import util.ErrorCode;
+import util.UtilBase;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
-
-import org.xsocket.connection.BlockingConnection;
-import org.xsocket.connection.IBlockingConnection;
-
-import user.UserInfo;
-import util.UtilBase;
-import util.ErrorCode;
-import define.SystemCfg;
 
 public class CUserLoginEventTest extends BaseEventTest {
 

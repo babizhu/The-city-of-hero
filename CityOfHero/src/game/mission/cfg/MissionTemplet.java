@@ -6,11 +6,10 @@ import game.battle.formation.IFormation;
 import game.fighter.FighterBase;
 import game.fighter.NpcFighter;
 import game.fighter.cfg.NpcFighterTempletCfg;
+import org.jdom2.Element;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.jdom2.Element;
 
 public class MissionTemplet {
 

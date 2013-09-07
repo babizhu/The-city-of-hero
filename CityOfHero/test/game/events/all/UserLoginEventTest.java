@@ -1,23 +1,18 @@
 package game.events.all;
 
 
-import static org.junit.Assert.assertEquals;
+import define.SystemCfg;
 import game.events.Event;
+import org.junit.*;
+import org.xsocket.connection.BlockingConnection;
+import org.xsocket.connection.IBlockingConnection;
+import util.ErrorCode;
+import util.UtilBase;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.xsocket.connection.BlockingConnection;
-import org.xsocket.connection.IBlockingConnection;
-
-import util.UtilBase;
-import util.ErrorCode;
-import define.SystemCfg;
+import static org.junit.Assert.assertEquals;
 
 public class UserLoginEventTest extends BaseEventTest {
 

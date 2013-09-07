@@ -1,10 +1,10 @@
 package game.events.all.prop;
 
+import game.events.EventBase;
+import user.UserInfo;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
-
-import user.UserInfo;
-import game.events.EventBase;
 
 
 /**

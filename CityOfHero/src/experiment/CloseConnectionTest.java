@@ -1,22 +1,15 @@
 package experiment;
 
+import define.SystemCfg;
+import org.xsocket.MaxReadSizeExceededException;
+import org.xsocket.connection.*;
+import org.xsocket.connection.IConnection.FlushMode;
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.nio.BufferUnderflowException;
 import java.nio.channels.ClosedChannelException;
-
-import org.xsocket.MaxReadSizeExceededException;
-import org.xsocket.connection.IConnectHandler;
-import org.xsocket.connection.IConnection.FlushMode;
-import org.xsocket.connection.IDataHandler;
-import org.xsocket.connection.IDisconnectHandler;
-import org.xsocket.connection.IHandler;
-import org.xsocket.connection.IIdleTimeoutHandler;
-import org.xsocket.connection.INonBlockingConnection;
-import org.xsocket.connection.Server;
-
-import define.SystemCfg;
 
 /**
  * 测试在onData函数中，主动close连接，会否导致系统随后自动调用onDisconnect函数

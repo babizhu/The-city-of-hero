@@ -1,9 +1,9 @@
 package game.award;
 
-import java.util.Map;
-
 import user.UserInfo;
 import util.ErrorCode;
+
+import java.util.Map;
 
 /**
  * 奖品中心

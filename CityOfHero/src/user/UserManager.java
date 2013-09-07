@@ -1,6 +1,9 @@
 package user;
 
 import game.events.Event;
+import org.xsocket.connection.INonBlockingConnection;
+import util.ErrorCode;
+import util.SystemTimer;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -8,11 +11,6 @@ import java.util.Map.Entry;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-
-import org.xsocket.connection.INonBlockingConnection;
-
-import util.ErrorCode;
-import util.SystemTimer;
 
 /**
  * 用户管理类	单例

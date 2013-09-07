@@ -1,10 +1,10 @@
 package util;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 import java.nio.ByteBuffer;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class BaseUtilTest {
 

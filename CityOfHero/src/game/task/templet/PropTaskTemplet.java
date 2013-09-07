@@ -1,7 +1,7 @@
 package game.task.templet;
 
-import game.task.TaskBase;
 import game.task.PropTask;
+import game.task.TaskBase;
 import game.task.enums.TaskType;
 
 public class PropTaskTemplet extends TaskTempletBase{

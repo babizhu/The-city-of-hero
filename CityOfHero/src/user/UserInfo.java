@@ -5,15 +5,13 @@ import game.award.AwardInfo;
 import game.partner.PartnerManager;
 import game.prop.PropManager;
 import game.task.TaskManager;
-
-import java.io.IOException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xsocket.connection.INonBlockingConnection;
-
 import util.ErrorCode;
 import util.UtilBase;
+
+import java.io.IOException;
 
 /**
  * 用户基础信息类

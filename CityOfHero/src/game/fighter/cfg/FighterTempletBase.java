@@ -1,10 +1,9 @@
 
 package game.fighter.cfg;
 
-import org.jdom2.Element;
-
 import game.battle.skill.SkillTemplet;
 import game.battle.skill.cfg.SkillTempletCfg;
+import org.jdom2.Element;
 
 /**
  * 战士模版

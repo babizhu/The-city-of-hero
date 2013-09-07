@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import static java.text.MessageFormat.*;
+import static java.text.MessageFormat.format;
 
 
 /**
@@ -294,6 +294,7 @@ public class Formation implements IFormation{
                 ret.add( f );
                 return ret;
             }
+
         }
     }
 

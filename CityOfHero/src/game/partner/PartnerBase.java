@@ -6,16 +6,14 @@ import game.prop.ICalculateAddtion;
 import game.prop.equipment.EquipmentBase;
 import game.prop.equipment.EquipmentType;
 import game.prop.templet.EquipmentTemplet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import user.UserInfo;
+import util.ErrorCode;
 
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import user.UserInfo;
-import util.ErrorCode;
 
 public class PartnerBase extends FighterBase implements ICalculateAddtion, ITransformStream{
 

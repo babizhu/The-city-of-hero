@@ -1,14 +1,12 @@
 package game.events.all;
 
 import game.events.EventBase;
+import org.xsocket.connection.INonBlockingConnection;
+import user.UserInfo;
+import util.ErrorCode;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
-
-import org.xsocket.connection.INonBlockingConnection;
-
-import user.UserInfo;
-import util.ErrorCode;
 
 /**
  * 主动传送一个错误代码到客户端，目前只用于用例调试

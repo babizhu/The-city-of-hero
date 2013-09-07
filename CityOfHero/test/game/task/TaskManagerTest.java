@@ -1,16 +1,15 @@
 package game.task;
 
-import static org.junit.Assert.assertEquals;
 import game.task.cfg.TaskTempletCfg;
 import game.task.enums.TaskStatus;
 import game.task.enums.TaskType;
+import org.junit.Test;
+import user.UserInfo;
+import util.ErrorCode;
 
 import java.util.Random;
 
-import org.junit.Test;
-
-import user.UserInfo;
-import util.ErrorCode;
+import static org.junit.Assert.assertEquals;
 
 public class TaskManagerTest {
 

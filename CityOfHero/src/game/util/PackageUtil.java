@@ -1,19 +1,15 @@
 package game.util;
 
 import game.events.EventBase;
-import game.events.IEvent;
 import game.events.EventDescrip;
+import game.events.IEvent;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.JarURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Formatter;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 

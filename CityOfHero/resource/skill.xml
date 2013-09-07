@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--技能配置表-->
-<!--注意：所有的SkillEffect中，SUB_HP必须排在最前面，后面的其他伤害都依赖于ENEMY_HP是否命中-->
-<!--注意：ADD_HP仅处理加血的情况，所有存在减血情况请采用SUB_HP-->
-<skills xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<!--注意：所有的SkillEffect中，HEALTH_DOWN必须排在最前面，后面的其他伤害都依赖于ENEMY_HP是否命中-->
+<!--注意：HEALTH_UP仅处理加血的情况，所有存在减血情况请采用HEALTH_DOWN-->
+<skills>
 	<skill>
 		<id>1</id>
 		<name>落井下石</name>
@@ -19,7 +19,7 @@
 		<enemy>NORMAL_ATTACK</enemy>
 		<enemy_effect>HEALTH_DOWN,SkillAttackFormula,6</enemy_effect>
 		<buffId>0</buffId>
-		<buffFormula></buffFormula>
+		<buffFormula/>
 	</skill>
 	<skill>
 		<id>3</id>

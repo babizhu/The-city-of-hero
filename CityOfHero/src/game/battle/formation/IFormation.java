@@ -16,8 +16,7 @@ public interface IFormation {
 	
 	/**
 	 * 获取普通攻击时应该被攻击的玩家
-	 * @param attacker	攻方
-	 * @return
+	 * @param       attacker	攻方
 	 */
 	FighterBase getBaseDefender( FighterBase attacker );
 	

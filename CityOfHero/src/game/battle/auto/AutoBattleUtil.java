@@ -5,10 +5,9 @@ import game.battle.IBattleUtil;
 import game.battle.buff.BuffRunPoint;
 import game.battle.formula.Formula;
 import game.fighter.FighterBase;
+import util.RandomUtil;
 
 import java.util.Comparator;
-
-import util.RandomUtil;
 
 public class AutoBattleUtil implements IBattleUtil {
 
@@ -28,8 +27,10 @@ public class AutoBattleUtil implements IBattleUtil {
 			return f2.getSpeed() - f1.getSpeed();
 		}
 	};
-	
-	/**
+
+
+
+    /**
 	 * 判断攻击者是否命中<br>
 	 * 公式				由防御者的闪避率决定，闪避率越低，越容易命中			
 	 * @param attacker			攻击者
@@ -50,7 +51,6 @@ public class AutoBattleUtil implements IBattleUtil {
 	 *
 	 * @param attacker
 	 * @param defender
-	 * @return 
 	 */
 	private boolean calcCrit( FighterBase attacker, FighterBase defender ) {
 		
@@ -66,7 +66,6 @@ public class AutoBattleUtil implements IBattleUtil {
 	 * @param defender
 	 * @param formula	计算公式
 	 * @param arguments	相应参数，如不存在，请放入null
-	 * @return
 	 */
 	@Override
 	public AttackInfo calcAttackInfo( FighterBase attacker, FighterBase defender, Formula formula, float[] arguments ) {

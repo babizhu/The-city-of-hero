@@ -2,16 +2,14 @@ package game.events.all.user;
 
 import game.events.EventBase;
 import game.events.EventDescrip;
+import org.xsocket.connection.INonBlockingConnection;
+import user.UserInfo;
+import user.UserManager;
+import util.ErrorCode;
+import util.UtilBase;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
-
-import org.xsocket.connection.INonBlockingConnection;
-
-import user.UserInfo;
-import user.UserManager;
-import util.UtilBase;
-import util.ErrorCode;
 
 
 @EventDescrip(desc = "玩家登陆包", structure = "short用户名长度,byte[]用户名")

@@ -1,15 +1,5 @@
 package game.fighter;
 
-import java.nio.ByteBuffer;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import user.UserInfo;
-import util.ErrorCode;
-
 import game.ITransformStream;
 import game.fighter.cfg.HeroTemplet;
 import game.partner.PartnerBase;
@@ -17,6 +7,14 @@ import game.prop.ICalculateAddtion;
 import game.prop.equipment.EquipmentBase;
 import game.prop.equipment.EquipmentType;
 import game.prop.templet.EquipmentTemplet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import user.UserInfo;
+import util.ErrorCode;
+
+import java.nio.ByteBuffer;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 英雄卡牌，类似于玩家的伙伴，以前的PartnerBase类在适当的时候会被废除掉

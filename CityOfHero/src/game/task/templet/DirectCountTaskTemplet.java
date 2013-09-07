@@ -1,8 +1,7 @@
 package game.task.templet;
 
-import game.task.TaskBase;
 import game.task.DirectCountTask;
-
+import game.task.TaskBase;
 import game.task.enums.TaskType;
 
 /**

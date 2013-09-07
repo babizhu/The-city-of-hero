@@ -1,11 +1,10 @@
 package game.events.all;
 
 import game.events.EventBase;
+import org.xsocket.connection.IBlockingConnection;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
-
-import org.xsocket.connection.IBlockingConnection;
 
 
 public abstract class BaseEventTest {

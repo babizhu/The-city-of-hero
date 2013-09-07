@@ -2,11 +2,10 @@ package game.prop.equipment;
 
 import game.prop.templet.EquipmentTemplet;
 import game.prop.templet.PropTempletBase;
+import util.ErrorCode;
 
 import java.nio.ByteBuffer;
 import java.util.Arrays;
-
-import util.ErrorCode;
 
 
 public class Equipment extends EquipmentBase{

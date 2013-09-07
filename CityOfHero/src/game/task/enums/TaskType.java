@@ -1,10 +1,6 @@
 package game.task.enums;
 
-import game.task.templet.TaskTempletBase;
-import game.task.templet.DirectCountTaskTemplet;
-import game.task.templet.DirectTaskTemplet;
-import game.task.templet.MissionTaskTemplet;
-import game.task.templet.PropTaskTemplet;
+import game.task.templet.*;
 
 /**
  * 任务类型

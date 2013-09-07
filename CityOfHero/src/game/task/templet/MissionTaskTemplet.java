@@ -1,7 +1,7 @@
 package game.task.templet;
 
-import game.task.TaskBase;
 import game.task.MissionTask;
+import game.task.TaskBase;
 import game.task.enums.TaskType;
 
 /**

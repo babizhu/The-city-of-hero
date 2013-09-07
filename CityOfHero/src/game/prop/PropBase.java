@@ -1,8 +1,8 @@
 package game.prop;
 
-import java.nio.ByteBuffer;
-
 import game.ITransformStream;
+
+import java.nio.ByteBuffer;
 
 
 public abstract class PropBase implements IProp, ITransformStream{

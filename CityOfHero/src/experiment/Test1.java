@@ -1,10 +1,10 @@
 package experiment;
 
-import java.util.List;
-
 import com.alibaba.druid.sql.ast.SQLStatement;
 import com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser;
 import com.alibaba.druid.sql.dialect.mysql.visitor.MySqlOutputVisitor;
+
+import java.util.List;
 
 public class Test1 {
 	private String sql  = "SELECT * FROM T";

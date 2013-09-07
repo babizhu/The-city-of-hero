@@ -3,17 +3,16 @@ package game.task.cfg;
 import game.task.enums.TaskProperty;
 import game.task.enums.TaskType;
 import game.task.templet.TaskTempletBase;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import org.jdom2.Document;
-import org.jdom2.Element;
-import org.jdom2.JDOMException;
-import org.jdom2.input.SAXBuilder;
 
 
 /**

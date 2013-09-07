@@ -5,15 +5,10 @@ import game.fighter.FighterBase;
 import game.fighter.NpcFighter;
 import game.fighter.cfg.NpcFighterTempletCfg;
 import game.mission.cfg.MissionTempletCfg;
+import org.junit.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 public class AutoBattleTest {
 

@@ -1,13 +1,13 @@
 package game.events.all.base;
 
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.List;
-
-import user.UserInfo;
 import game.award.AwardInfo;
 import game.events.EventBase;
 import game.events.EventDescrip;
+import user.UserInfo;
+
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.List;
 
 /**
  * 告知玩家获得了什么奖励，通常是由服务器主动发出

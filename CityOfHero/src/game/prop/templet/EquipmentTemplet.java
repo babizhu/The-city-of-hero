@@ -2,7 +2,6 @@ package game.prop.templet;
 
 import game.prop.enums.PropType;
 import game.prop.equipment.EquipmentType;
-
 import org.jdom2.Element;
 
 /***

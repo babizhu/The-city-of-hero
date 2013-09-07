@@ -1,13 +1,12 @@
 package define;
 
-import java.io.IOException;
-
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
-
 import util.SystemTimer;
+
+import java.io.IOException;
 
 /**
  *  保留系统信息，诸如启动时间，开服时间等一系列参数

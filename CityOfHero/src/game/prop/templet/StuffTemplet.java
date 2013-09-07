@@ -1,7 +1,6 @@
 package game.prop.templet;
 
 import game.prop.enums.PropType;
-
 import org.jdom2.Element;
 
 public class StuffTemplet extends PropTempletBase {

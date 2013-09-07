@@ -4,17 +4,16 @@ import game.battle.buff.templet.BuffTempletBase;
 import game.battle.formula.Formula;
 import game.battle.skill.SkillEffect;
 import game.fighter.FighterAttribute;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.jdom2.Document;
-import org.jdom2.Element;
-import org.jdom2.JDOMException;
-import org.jdom2.input.SAXBuilder;
 
 
 /**

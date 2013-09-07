@@ -6,6 +6,10 @@ import game.prop.equipment.Equipment;
 import game.prop.equipment.EquipmentBase;
 import game.prop.templet.PropTempletBase;
 import game.util.GameUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import util.ErrorCode;
+import util.db.DatabaseUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,12 +18,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import util.ErrorCode;
-import util.db.DatabaseUtil;
 
 /**
  * 和数据库打交道的道具类，包括，装备，宝石，材料

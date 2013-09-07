@@ -1,7 +1,7 @@
 package experiment;
 
-import game.task.TaskBase;
 import game.task.DirectCountTask;
+import game.task.TaskBase;
 
 import java.util.ArrayList;
 import java.util.HashMap;

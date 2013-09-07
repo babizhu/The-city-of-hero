@@ -1,11 +1,11 @@
 package game.events.all.user;
 
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
+import game.events.EventBase;
+import game.events.EventDescrip;
 import user.UserInfo;
 
-import game.events.*;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
 @EventDescrip(desc = "玩家退出包")
 public class UserExitEvent extends EventBase {

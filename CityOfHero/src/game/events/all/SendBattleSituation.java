@@ -9,13 +9,12 @@ import game.fighter.FighterBase;
 import game.fighter.NpcFighter;
 import game.fighter.cfg.NpcFighterTempletCfg;
 import game.mission.cfg.MissionTempletCfg;
+import user.UserInfo;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
-
-import user.UserInfo;
 
 /**
  * 和客户端进行通信测试，专门用与测试的，不是正式的程序

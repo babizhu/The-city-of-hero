@@ -5,10 +5,10 @@ package game.events.all.message;
 
 import game.events.EventBase;
 import game.events.EventDescrip;
+import user.UserInfo;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import user.UserInfo;
 
 /**
  * @author liukun

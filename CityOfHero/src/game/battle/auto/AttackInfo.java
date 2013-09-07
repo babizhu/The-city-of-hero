@@ -46,7 +46,7 @@ public class AttackInfo {
 	
 	/**
 	 * 用于解析战况的时候使用
-	 * @param data
+	 * @param data      原始数据
 	 */
 	public AttackInfo( byte data ) {
 		super();
@@ -57,7 +57,6 @@ public class AttackInfo {
 
 	/**
 	 * 获取网络传送用的raw数据的拷贝，就是一个byte
-	 * @return
 	 */
 	byte getRawData(){
 		return data;
@@ -65,7 +64,6 @@ public class AttackInfo {
 	
 	/**
 	 * @see #HIT
-	 * @return
 	 */
 	public boolean isHit(){
 		return getBitValue( HIT );
@@ -81,7 +79,6 @@ public class AttackInfo {
 	
 	/**
 	 * @see #BLOCK
-	 * @return
 	 */
 	public boolean isBlock(){
 		return getBitValue( BLOCK );
@@ -113,7 +110,6 @@ public class AttackInfo {
 	/**
 	 * 获取暴击倍数<br>
 	 * 1:	无暴击
-	 * @return
 	 */
 	public byte getCrit(){
 		return (byte) (data & CRIT );
@@ -121,7 +117,6 @@ public class AttackInfo {
 	
 	/**
 	 * 最大倍数不大于7倍
-	 * @param crit
 	 */
 	public void setCrit( int crit ){
 		if( crit > 7 || crit < 0 ){

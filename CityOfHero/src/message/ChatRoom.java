@@ -2,13 +2,12 @@ package message;
 
 import game.events.Event;
 import game.events.all.message.SendMsgEvent;
+import user.UserInfo;
+import util.UtilBase;
 
 import java.nio.ByteBuffer;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-
-import user.UserInfo;
-import util.UtilBase;
 
 public class ChatRoom implements IChat{
 	

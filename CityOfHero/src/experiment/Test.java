@@ -1,20 +1,5 @@
 package experiment;
 
-import game.award.AwardInfo;
-import game.award.AwardContent;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
-
-import javax.management.JMException;
-
-import user.UserInfo;
-
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.sql.ast.SQLStatement;
 import com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser;
@@ -23,6 +8,13 @@ import com.alibaba.druid.sql.parser.Lexer;
 import com.alibaba.druid.sql.parser.SQLStatementParser;
 import com.alibaba.druid.sql.parser.Token;
 import com.alibaba.druid.stat.JdbcStatManager;
+import game.award.AwardContent;
+import game.award.AwardInfo;
+import user.UserInfo;
+
+import javax.management.JMException;
+import java.sql.*;
+import java.util.List;
 
 public class Test {
 

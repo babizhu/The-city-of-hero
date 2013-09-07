@@ -1,10 +1,9 @@
 package game.prop.templet;
 
-import org.jdom2.Element;
-
 import game.award.Award;
 import game.award.AwardType;
 import game.prop.enums.PropType;
+import org.jdom2.Element;
 
 /**
  * 为玩家升级所准备的大礼包

@@ -1,11 +1,12 @@
 package game.task.cfg;
 
-import static org.junit.Assert.*;
 import game.task.enums.TaskProperty;
 import game.task.enums.TaskType;
 import game.task.templet.TaskTempletBase;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class TaskTempletCfgTest {
 

@@ -3,18 +3,12 @@
  */
 package game.events;
 
-import static org.junit.Assert.*;
-import game.events.EventBase;
-import game.events.Event;
 import game.events.all.user.UserLoginEvent;
+import org.junit.*;
 
 import java.nio.ByteBuffer;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author liukun

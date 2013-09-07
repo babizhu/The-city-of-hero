@@ -1,18 +1,17 @@
 package game.award;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import user.UserInfo;
+import util.ErrorCode;
+import util.db.DatabaseUtil;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicLong;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import user.UserInfo;
-import util.ErrorCode;
-import util.db.DatabaseUtil;
 
 /**
  * 和数据库打交道

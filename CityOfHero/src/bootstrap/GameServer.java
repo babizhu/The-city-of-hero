@@ -2,27 +2,24 @@
  * 
  */
 package bootstrap;
+
+import define.SystemCfg;
 import game.mission.cfg.MissionTempletCfg;
 import game.prop.cfg.PropTempletCfg;
 import game.task.cfg.TaskTempletCfg;
-
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.nio.charset.Charset;
-
-import javax.management.JMException;
-
 import net.GameHandler;
-
 import org.xsocket.connection.ConnectionUtils;
 import org.xsocket.connection.IConnection.FlushMode;
 import org.xsocket.connection.IHandler;
 import org.xsocket.connection.Server;
-
-import util.UtilBase;
 import util.SystemTimer;
-import define.SystemCfg;
+import util.UtilBase;
+
+import javax.management.JMException;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.nio.charset.Charset;
 
 /**
  * @author liukun
@@ -68,7 +65,6 @@ public class GameServer extends Server{
 		InetAddress address = null;
 		GameServer server = new GameServer( address, SystemCfg.PORT, new GameHandler() );
 		server.readAllCfg();
-
 		
 		server.start();
 		ConnectionUtils.registerMBean( server );   

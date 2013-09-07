@@ -2,15 +2,14 @@ package game.events.all;
 
 
 import game.events.Event;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.xsocket.connection.IBlockingConnection;
+
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
 public class EquipmentLevelUpEventTest extends BaseEventTest {
 

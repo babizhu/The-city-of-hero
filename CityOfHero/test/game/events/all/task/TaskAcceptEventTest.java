@@ -1,12 +1,18 @@
 package game.events.all.task;
 
 
-import static org.junit.Assert.assertEquals;
+import define.SystemCfg;
 import game.events.Event;
 import game.events.all.BaseEventTest;
 import game.events.all.UserLoginEventTest;
 import game.task.cfg.TaskTempletCfg;
 import game.task.enums.TaskStatus;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.xsocket.connection.BlockingConnection;
+import org.xsocket.connection.IBlockingConnection;
+import util.ErrorCode;
+import util.db.DatabaseUtil;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -14,14 +20,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.xsocket.connection.BlockingConnection;
-import org.xsocket.connection.IBlockingConnection;
-
-import util.ErrorCode;
-import util.db.DatabaseUtil;
-import define.SystemCfg;
+import static org.junit.Assert.assertEquals;
 
 public class TaskAcceptEventTest extends BaseEventTest {
 

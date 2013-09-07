@@ -1,18 +1,13 @@
 package game.prop;
 
-import static org.junit.Assert.assertEquals;
 import game.prop.cfg.PropTempletCfg;
 import game.prop.equipment.EquipmentBase;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
+import org.junit.*;
 import user.UserInfo;
 import user.UserManager;
 import util.ErrorCode;
+
+import static org.junit.Assert.assertEquals;
 
 public class PropManagerTest {
 

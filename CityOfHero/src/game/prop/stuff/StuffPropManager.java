@@ -6,14 +6,13 @@ import game.prop.PropDataProvider;
 import game.prop.PropUnit;
 import game.prop.cfg.PropTempletCfg;
 import game.prop.templet.PropTempletBase;
+import user.UserInfo;
+import util.ErrorCode;
 
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import user.UserInfo;
-import util.ErrorCode;
 
 public class StuffPropManager implements IPropManager  {
 

@@ -6,12 +6,11 @@ package game.events.all.task;
 import game.events.EventBase;
 import game.events.EventDescrip;
 import game.task.TaskBase;
+import user.UserInfo;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Map;
-
-import user.UserInfo;
 
 /**
  * 

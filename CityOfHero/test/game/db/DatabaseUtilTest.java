@@ -1,6 +1,7 @@
 package game.db;
 
-import static org.junit.Assert.assertNotNull;
+import org.junit.*;
+import util.db.DatabaseUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,13 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import util.db.DatabaseUtil;
+import static org.junit.Assert.assertNotNull;
 
 public class DatabaseUtilTest {
 

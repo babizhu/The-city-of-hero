@@ -1,8 +1,8 @@
 package core;
 
-import java.io.IOException;
-
 import org.xsocket.connection.INonBlockingConnection;
+
+import java.io.IOException;
 
 public interface IGameLogic {
 

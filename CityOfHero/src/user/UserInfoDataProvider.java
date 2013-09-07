@@ -1,17 +1,16 @@
 package user;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import util.ErrorCode;
+import util.SystemTimer;
+import util.db.DatabaseUtil;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import util.ErrorCode;
-import util.SystemTimer;
-import util.db.DatabaseUtil;
 
 /**
  * 和数据库打交道

@@ -3,12 +3,11 @@ package game.prop.equipment;
 import game.prop.IPropManager;
 import game.prop.PropDataProvider;
 import game.prop.PropUnit;
+import user.UserInfo;
+import util.ErrorCode;
 
 import java.nio.ByteBuffer;
 import java.util.Map;
-
-import user.UserInfo;
-import util.ErrorCode;
 
 /**
  * 道具管理器，除了PropManager其余地方不要直接引用

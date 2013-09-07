@@ -1,24 +1,16 @@
 package net;
 
+import core.GameMainLogic;
 import game.events.EventBase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.xsocket.MaxReadSizeExceededException;
+import org.xsocket.connection.*;
 
 import java.io.IOException;
 import java.nio.BufferUnderflowException;
 import java.nio.channels.ClosedChannelException;
 import java.text.MessageFormat;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.xsocket.MaxReadSizeExceededException;
-import org.xsocket.connection.ConnectionUtils;
-import org.xsocket.connection.IConnectHandler;
-import org.xsocket.connection.IDataHandler;
-import org.xsocket.connection.IDisconnectHandler;
-import org.xsocket.connection.IIdleTimeoutHandler;
-import org.xsocket.connection.INonBlockingConnection;
-
-
-import core.GameMainLogic;
 
 /**
  * @author liukun 2012-8-16

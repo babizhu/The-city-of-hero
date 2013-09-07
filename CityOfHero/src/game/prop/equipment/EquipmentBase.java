@@ -2,10 +2,9 @@ package game.prop.equipment;
 
 import game.prop.ICalculateAddtion;
 import game.prop.PropBase;
+import util.ErrorCode;
 
 import java.nio.ByteBuffer;
-
-import util.ErrorCode;
 
 
 /**

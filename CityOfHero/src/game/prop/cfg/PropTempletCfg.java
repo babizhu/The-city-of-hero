@@ -2,16 +2,15 @@ package game.prop.cfg;
 
 import game.prop.enums.PropType;
 import game.prop.templet.PropTempletBase;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.jdom2.Document;
-import org.jdom2.Element;
-import org.jdom2.JDOMException;
-import org.jdom2.input.SAXBuilder;
 
 /**
  * 道具配置表，这会处理所有的道具类型

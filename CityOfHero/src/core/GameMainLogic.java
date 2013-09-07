@@ -3,17 +3,14 @@ package core;
 import game.events.Event;
 import game.events.all.user.UserCreateEvent;
 import game.events.all.user.UserLoginEvent;
-
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xsocket.connection.INonBlockingConnection;
-
 import user.UserManager;
 import util.ErrorCode;
+
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
 /**
  * 游戏的主干框架 单例

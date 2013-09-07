@@ -1,7 +1,7 @@
 package game.task.templet;
 
-import game.task.TaskBase;
 import game.task.CustomTask;
+import game.task.TaskBase;
 
 /**
  * 玩家定制任务

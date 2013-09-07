@@ -1,9 +1,9 @@
 package game.events;
 
+import user.UserInfo;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
-
-import user.UserInfo;
 
 
 

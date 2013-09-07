@@ -4,13 +4,12 @@
 package game.events.all;
 
 import game.events.EventBase;
+import user.UserInfo;
+import user.UserManager;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import user.UserInfo;
-import user.UserManager;
 
 /**
  * 用来测试死锁问题，比如精英挑战赛等交互类的玩法

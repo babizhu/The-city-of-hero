@@ -9,13 +9,12 @@ import game.battle.skill.SkillEffect;
 import game.battle.skill.SkillTemplet;
 import game.fighter.FighterAttribute;
 import game.fighter.FighterBase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * 自动回合制的战斗模式
@@ -67,20 +66,20 @@ public class AutoBattle extends BattleBase {
 	/**
 	 * 初始化，按照速度对参战人员进行排序
 	 */
-	private void init(){		
-		
+	private void init(){
+
 		allFighters.addAll( attackers.getAllFighters() );
-		allFighters.addAll( defenders.getAllFighters() );		
+		allFighters.addAll( defenders.getAllFighters() );
 		Collections.sort( allFighters, util.getOrderComparator() );
 	}
 
 	/**
 	 * 根据传入的战士获取相应的阵形
-	 * @param fighter
-	 * @param isFriend	
-	 * 			true：输入战士这一边的阵形		false:输入战士敌对的阵形
-	 * @return
-	 */
+	 * @param fighter   输入战士
+	 * @param isFriend
+     * 			true    输入战士这一边的阵形
+     * 			false   输入战士敌对的阵形
+     */
 	private IFormation getFormation( FighterBase fighter, boolean isFriend ){
 		if( isFriend ){
 			return fighter.isBottom() ?  attackers : defenders;
@@ -200,10 +199,13 @@ public class AutoBattle extends BattleBase {
 	}
 	
 	/**
-	 * 普通攻击
-	 * @param attacker		当前攻击者
+	 * 发动一次普通攻击
+	 * @param attacker		    当前攻击者
 	 * @param currentDefender	当前的防守队伍
-	 * @return
+     *
+     * @return
+     * 			true			被攻击方全军覆没了<br>
+     * 			false			被攻击方继续存活
 	 */
 	private boolean doNormalAttack( FighterBase attacker, IFormation currentDefender ) {
 
@@ -220,12 +222,12 @@ public class AutoBattle extends BattleBase {
 
 //		if( info.isHit() ){//未命中，不存在反击，这个逻辑可根据实际情况进行修改
 //			attacker.setSp( attacker.getSp() + SP_TO_ADD );
-//			
+//
 //			if( !defender.isDie() ){
 //				if( info.getDamage() > 1 ){//防止不死之身之类的技能长久不结束
 //					defender.setSp( defender.getSp() + SP_TO_ADD );
 //				}
-//			
+//
 //				if( info.isBlock() ){
 //					return doBlockAndCounterAttack( defender, attacker );
 //				}
@@ -260,7 +262,7 @@ public class AutoBattle extends BattleBase {
 	 * 如果一方全军覆没，则返回true
 	 * 
 	 * @param defender			被攻击的战士
-	 * @param damage
+	 * @param damage            损失的hp
 	 * @return
 	 * 			true			被攻击方全军覆没了<br>
 	 * 			false			被攻击方继续存活

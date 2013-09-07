@@ -6,8 +6,6 @@ import game.prop.equipment.Equipment;
 import game.prop.equipment.EquipmentBase;
 import game.prop.equipment.EquipmentManager;
 import game.prop.stuff.StuffManager;
-
-
 import user.UserInfo;
 import util.ErrorCode;
 

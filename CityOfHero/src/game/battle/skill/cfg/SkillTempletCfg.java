@@ -5,17 +5,16 @@ import game.battle.formula.Formula;
 import game.battle.skill.SkillEffect;
 import game.battle.skill.SkillTemplet;
 import game.fighter.FighterAttribute;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.jdom2.Document;
-import org.jdom2.Element;
-import org.jdom2.JDOMException;
-import org.jdom2.input.SAXBuilder;
 
 
 /**
@@ -135,7 +134,6 @@ private static final Map<Integer,SkillTemplet> skillTemplets = new HashMap<Integ
 	public static void main(String[] args) {
 		
 		for( SkillTemplet t : skillTemplets.values() ){
-			
 			System.out.println( t );
 		}
 		

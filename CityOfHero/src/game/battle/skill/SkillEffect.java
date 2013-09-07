@@ -1,9 +1,10 @@
 
 package game.battle.skill;
-import java.util.Arrays;
 
 import game.battle.formula.Formula;
 import game.fighter.FighterAttribute;
+
+import java.util.Arrays;
 
 /**
  * 存放技能效果的数据，包含受影响的属性（hp，sp，speed等），公式，相关参数

@@ -4,11 +4,10 @@ import game.battle.auto.Formation;
 import game.battle.formation.IFormation;
 import game.prop.PropManager;
 import game.prop.equipment.EquipmentBase;
-
-import java.util.List;
-
 import user.UserInfo;
 import util.ErrorCode;
+
+import java.util.List;
 
 /**
  * 伙伴管理器

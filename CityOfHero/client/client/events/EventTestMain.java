@@ -1,13 +1,13 @@
 package client.events;
 
 
+import client.events.event.BaseEventTest;
+import client.events.event.CUserLoginEventTest;
+
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-
-import client.events.event.BaseEventTest;
-import client.events.event.CUserLoginEventTest;
 
 /**
  * 发包线程
