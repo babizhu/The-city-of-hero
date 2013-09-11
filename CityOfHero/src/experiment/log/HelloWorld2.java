@@ -15,6 +15,8 @@ public class HelloWorld2 {
 		LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
 		
 		StatusPrinter.print( lc );
+        System.out.println( lc.getStatusManager() );
+
 	}
 
 }

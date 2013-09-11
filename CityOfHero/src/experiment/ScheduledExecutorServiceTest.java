@@ -30,7 +30,7 @@ public class ScheduledExecutorServiceTest {
         		System.out.println( System.currentTimeMillis() );
         	}
 		};
-		scheduler.scheduleAtFixedRate(beeper, 1, 1, TimeUnit.SECONDS);
+        scheduler.scheduleAtFixedRate(beeper, 1, 1, TimeUnit.SECONDS);
 
 	}
 }

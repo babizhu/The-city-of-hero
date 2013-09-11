@@ -22,8 +22,7 @@ public class SendAwardEvent extends EventBase{
 	
 	@Override
 	public void run(UserInfo user, ByteBuffer buf) throws IOException {
-		// TODO Auto-generated method stub
-		
+
 	}
 	
 	/**

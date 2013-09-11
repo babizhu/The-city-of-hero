@@ -65,6 +65,7 @@ public class Formation implements IFormation{
 
         fighters = clonesList;
         pet = formation.getPet();//TODO 需要克隆一份
+//        fixme 这是
     }
 
     /**
