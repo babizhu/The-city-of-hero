@@ -9,7 +9,6 @@ import org.xsocket.connection.*;
 
 import java.io.IOException;
 import java.nio.BufferUnderflowException;
-import java.nio.channels.ClosedChannelException;
 import java.text.MessageFormat;
 
 /**
@@ -19,12 +18,16 @@ public class GameHandler implements IDataHandler, IConnectHandler,
 		IIdleTimeoutHandler, IDisconnectHandler {
 
     Logger logger = LoggerFactory.getLogger( GameHandler.class);
-	/**
-	 * 除去包头包尾允许接收的最大的包长度
-	 */
-	private static final int    PACKAGE_LEN = 8192;
-	
-	private final GameMainLogic gameLogic = GameMainLogic.getInstance();
+    /**
+     * 除去包头包尾允许接收的最大的包长度
+     */
+    private static final int MAX_PACKAGE_LEN;
+
+    static {
+        MAX_PACKAGE_LEN = 8192;
+    }
+
+    private final GameMainLogic gameLogic = GameMainLogic.getInstance();
 
 	/*
 	 * (non-Javadoc)
@@ -42,7 +45,7 @@ public class GameHandler implements IDataHandler, IConnectHandler,
 	}
 
 	@Override
-	public boolean onConnect(INonBlockingConnection con) throws IOException, BufferUnderflowException, MaxReadSizeExceededException {
+	public boolean onConnect(INonBlockingConnection con) throws BufferUnderflowException, MaxReadSizeExceededException {
 		
 		//con = ConnectionUtils.synchronizedConnection(con);
 		//System.out.println(con.getId() + " onConnect");
@@ -53,13 +56,13 @@ public class GameHandler implements IDataHandler, IConnectHandler,
 	}
 
 	@Override
-	public boolean onData(INonBlockingConnection con) throws IOException, BufferUnderflowException, ClosedChannelException,	MaxReadSizeExceededException {
+	public boolean onData(INonBlockingConnection con) throws IOException, BufferUnderflowException {
 
-		byte head = 0;
-		byte foot = 0;
-		short packageNo = 0;
-		short dataLength = 0;
-		byte data[] = null;
+		byte head;
+		byte foot;
+		short packageNo;
+		short dataLength;
+		byte data[];
 		con = ConnectionUtils.synchronizedConnection( con );
 		// synchronized (con) {
 		int available = con.available();
@@ -71,7 +74,7 @@ public class GameHandler implements IDataHandler, IConnectHandler,
 				head = con.readByte();
 				packageNo = con.readShort();
 				dataLength = con.readShort();
-				if (dataLength < 0 || dataLength > PACKAGE_LEN) {
+				if (dataLength < 0 || dataLength > MAX_PACKAGE_LEN) {
                     logger.info(MessageFormat.format("{0}网络错误，dataLength = {1}", con.getRemoteAddress(), dataLength));
 					con.close();
 					return true;
@@ -84,7 +87,7 @@ public class GameHandler implements IDataHandler, IConnectHandler,
 				con.resetToReadMark();
 				return true;
 			}
-			if (!checkInputData(head, foot)) {
+			if (!inputDataIsRight(head, foot)) {
 				con.close();
 				return true;
 			}
@@ -99,16 +102,13 @@ public class GameHandler implements IDataHandler, IConnectHandler,
 	/**
 	 * 检测客户端所发送的首尾标识位是否正确
 	 * 
-	 * @param head
-	 * @param foot
+	 * @param head      包头
+	 * @param foot      包尾
 	 * @return true 首尾包号正确 false 错误
 	 */
-	private boolean checkInputData( byte head, byte foot ) {
-		if (head != EventBase.HEAD || foot != EventBase.FOOT) {
-			return false;
-		}
-		return true;
-	}
+	private boolean inputDataIsRight(byte head, byte foot) {
+        return !(head != EventBase.HEAD || foot != EventBase.FOOT);
+    }
 	
 	/**
 	 * 主动响应玩家关闭连接的事件
