@@ -105,14 +105,9 @@ public class UserInfo {
 
 	private short 										bagCapacity;
 
-	
-
-	
-	/**
-	 * 构造函数，保持一个尽量精简的构造函数
-	 * @param sex 
-	 * @param nickName 
-	 */
+    /***
+     *
+     */
 	public UserInfo( INonBlockingConnection con, String name, String nickName, byte sex ) {
 		this.con = con;
 		this.packageManager = new UserPackageManager();
@@ -186,6 +181,7 @@ public class UserInfo {
 	
 	/**
 	 * 获取玩家金币
+     *
 	 * @return
 	 */
 	public synchronized int getGold(  ){

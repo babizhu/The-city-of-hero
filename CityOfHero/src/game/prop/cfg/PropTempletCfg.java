@@ -32,32 +32,36 @@ public class PropTempletCfg {
 	 * 通过配置表读取道具模板
 	 */
 	public static void init(){
+
+
 		
 		SAXBuilder builder = new SAXBuilder();    
 		Document document;
 		try {
+
 			document = builder.build( FILE );
 			Element root = document.getRootElement();  
-			List<?> taskList= root.getChildren( "prop" ); 
-			
-			for( int i = 0; i < taskList.size(); i++ ){
-				
-				Element element = (Element) taskList.get( i );
-				//System.out.println( element.getChildText( "name" ) );
-				PropType type = PropType.valueOf( element.getChildText( "propType" ) );
-				PropTempletBase templet = type.create();
-				templet.parse( element );
-				
-				/*******************关闭打印*****************************
-							System.out.println( templet );
-				********************************************************/
-				
-				PropTempletBase bpt = propTemplets.put( templet.getId(), templet );
-				if( bpt != null ){
-					throw new RuntimeException( "道具" + templet.getId() + "重复了" );
-				}
-				
-			}
+			List<?> taskList= root.getChildren( "prop" );
+
+
+            for (Object aTaskList : taskList) {
+
+                Element element = (Element) aTaskList;
+                //System.out.println( element.getChildText( "name" ) );
+                PropType type = PropType.valueOf(element.getChildText("propType"));
+                PropTempletBase templet = type.create();
+                templet.parse(element);
+
+                /*******************关闭打印*****************************
+                 System.out.println( templet );
+                 ********************************************************/
+
+                PropTempletBase bpt = propTemplets.put(templet.getId(), templet);
+                if (bpt != null) {
+                    throw new RuntimeException("道具" + templet.getId() + "重复了");
+                }
+
+            }
 		} catch (JDOMException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -69,8 +73,8 @@ public class PropTempletCfg {
 	
 	/**
 	 * 通过模板id获取模板
-	 * @param templetId
-	 * @return
+	 * @param templetId ff
+	 * @return     dff
 	 */
 	public static PropTempletBase getTempletById( short templetId ){
 		return propTemplets.get( templetId );

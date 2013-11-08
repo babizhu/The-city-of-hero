@@ -94,8 +94,8 @@ public enum Event {
 	
 	/**
 	 * 运行此枚举所对应的包的run方法
-	 * @param user
-	 * @param buf
+	 * @param user      用户名
+	 * @param buf       客户端发来的信息
 	 * @throws IOException 
 	 */
 	public void run( UserInfo user, ByteBuffer buf ) throws IOException {
@@ -114,7 +114,7 @@ public enum Event {
 			
 			Class<?> c = p.eventInstance.getClass();
 			EventDescrip desc = c.getAnnotation(EventDescrip.class);
-			String s = null;
+			String s;
 			s = (desc == null) ? "" : desc.desc();
 			String className = c.getName().substring( c.getName().lastIndexOf(".") + 1 );
 			f.format("%-8s %-40s %-10s %n", p.eventInstance.getEventId(), className, s );
@@ -125,7 +125,7 @@ public enum Event {
 			
 			Class<?> c = p.eventInstance.getClass();
 			EventDescrip desc = c.getAnnotation(EventDescrip.class);
-			String s = null;
+			String s;
 			s = (desc == null) ? "" : desc.desc();
 			String className = c.getName().substring( c.getName().lastIndexOf(".") + 1 );
 		//	f.format("%-8s %-40s %-10s \n", p.packageInstance.getPackageNo(), className, s );

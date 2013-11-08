@@ -1,0 +1,71 @@
+package #packageName#;
+
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 模版配置
+ * @author liukun
+ * #date
+ */
+public class #className# {
+	private static final Map<Integer,#templetClassName#> #mapName#s = new HashMap<Integer, #templetClassName#>();
+
+
+	static{
+		init();
+
+	}
+	private static final String FILE = "#xmlPath#";
+
+
+
+	private static void init(){
+
+		SAXBuilder builder = new SAXBuilder();
+		Document document;
+		try {
+			document = builder.build( FILE );
+			Element root = document.getRootElement();
+			List<?> list = root.getChildren( "npc" );
+
+			for (Object o : list) {
+				#templetClassName# templet = new #templetClassName#( (Element) o );
+				#templetClassName# temp = #mapName#s.put( templet.getId(), templet );
+				if( temp != null ){
+					throw new RuntimeException( "#templetClassName#" + temp.getId() + "重复了" );
+				}
+
+			}
+		} catch (JDOMException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println( "#templetClassName# 配置文件解析完毕" );
+	}
+
+
+	/**
+	 * 通过id获取#templetClassName#的引用
+	 * @param   templetId   id
+	 * @return  返回一个引用
+	 */
+	public static #templetClassName# get#templetClassName#ById( int templetId ){
+		return #mapName#s.get( templetId );
+	}
+	public static void main(String[] args) {
+
+		int id = 101101;
+		System.out.println( get#templetClassName#ById( id ) );
+	}
+
+}

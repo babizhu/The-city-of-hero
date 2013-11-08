@@ -85,7 +85,7 @@ public class UserManager {
 	}
 	/**
 	 * 通过用户名从数据库获取玩家信息,不管是否在线，只要该玩家确实在数据库中存在，就尽力保存到内存当中来，是否在线无所谓
-	 * @param string
+	 * @param name
 	 * @return
 	 * 
 	 * 			如果不存在则返回null
@@ -109,7 +109,7 @@ public class UserManager {
 	
 	/**
 	 * 通过昵称获取玩家信息
-	 * @param string
+	 * @param nickName
 	 * @return
 	 * 
 	 */
@@ -126,11 +126,11 @@ public class UserManager {
 	 * 所有的user信息都是从onlineUsers中获取，这样可以缩小user被发布的范围，增加线程安全性
 	 * @param name
 	 * @param pack
-	 * @param data
+	 * @param buf
 	 * @return
 	 * @throws IOException 
 	 */
-	public ErrorCode eventRun( String name, Event pack, byte[] data ) throws IOException {
+	public ErrorCode eventRun( String name, Event pack, ByteBuffer buf ) throws IOException {
 
 		UserInfo user = getByName( name );
 		if( user == null ){
@@ -139,7 +139,6 @@ public class UserManager {
 		if( user.getPackageManager().safeCheck( pack ) == false ){
 			return ErrorCode.PACKAGE_SAFE_CHECK_FAIL;
 		}
-		ByteBuffer buf = ByteBuffer.wrap( data );
 		pack.run( user, buf );
 		return ErrorCode.SUCCESS;
 	}
@@ -153,7 +152,7 @@ public class UserManager {
 	 * 
 	 * 
 	 * @param con
-	 * @param data
+	 * @param buf
 	 * @return
 	 * @throws IOException
 	 * 

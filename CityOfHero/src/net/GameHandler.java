@@ -58,11 +58,12 @@ public class GameHandler implements IDataHandler, IConnectHandler,
 	@Override
 	public boolean onData(INonBlockingConnection con) throws IOException, BufferUnderflowException {
 
-		byte head;
-		byte foot;
-		short packageNo;
-		short dataLength;
-		byte data[];
+		byte    head;
+		byte    foot;
+		short   packageNo;
+		short   dataLength;
+		byte    data[];
+
 		con = ConnectionUtils.synchronizedConnection( con );
 		// synchronized (con) {
 		int available = con.available();
@@ -79,7 +80,7 @@ public class GameHandler implements IDataHandler, IConnectHandler,
 					con.close();
 					return true;
 				}
-				data = con.readBytesByLength(dataLength);
+				data = con.readBytesByLength( dataLength );
 				foot = con.readByte();
 				con.removeReadMark();
 

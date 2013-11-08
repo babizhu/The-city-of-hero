@@ -77,7 +77,7 @@ public final class GameMainLogic implements IGameLogic {
 						code = ErrorCode.USER_NOT_LOGIN;
 					}
 					else{
-						code = UserManager.getInstance().eventRun( name, event, data );
+						code = UserManager.getInstance().eventRun( name, event, buf );
 					}
 				}
 			}
