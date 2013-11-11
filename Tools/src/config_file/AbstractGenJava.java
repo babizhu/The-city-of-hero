@@ -74,8 +74,22 @@ public abstract class AbstractGenJava {
      */
     abstract protected String buildClassName(String name);
 
+
+    /**
+     * 处理自定义的内容，不要误删除了
+     */
     protected void writeFile(){
-        String path = D.SRC_DIR + D.CFG_DIR + packageName + "\\" + className + ".java";
+        String path = D.SRC_DIR + D.CFG_DIR + packageName + "/" + className + ".java";
+        String manualContent = "";
+        if( Util.isExist( path ) ){
+            String oldData = Util.readFile( path );
+            int beginPos = oldData.indexOf(D.MANUAL_WORK_BEGIN);
+            int endPos = oldData.indexOf( D.MANUAL_WORK_END );
+            if( endPos != -1 && beginPos != -1 ){
+                manualContent = oldData.substring( beginPos + D.MANUAL_WORK_BEGIN.length(), endPos );
+            }
+        }
+        javaContent = javaContent.replace( D.MANUAL_WORK_TAG, manualContent );//把自定义的内容加上去
         Util.writeFile(path, javaContent);
     }
 

@@ -70,5 +70,10 @@ public class ParseExcel {
         pe.gen();
 
 
+        String content = "0f";
+        Short aShort = Short.parseShort( content, 16 );
+        System.out.println( aShort );
+
+
     }
 }

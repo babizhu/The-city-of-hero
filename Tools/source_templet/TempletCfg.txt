@@ -68,4 +68,6 @@ public class #className# {
 		System.out.println( get#templetClassName#ById( id ) );
 	}
 
+	/*自定义代码开始*/$manualWork$/*自定义代码结束*/
+
 }

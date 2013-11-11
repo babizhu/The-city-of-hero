@@ -5,21 +5,16 @@ import org.jdom2.Element;
 /**
  * 模版
  * @author liukun
- * 2013-11-8 18:30:29
+ * 2013-11-11 17:36:36
  */
 public class DogzTemplet {
 
     /**
 	 * id
 	 */
-    private int id;
+    private final int id;
 
-	/**
-	 * id
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
+
 
 	/**
 	 * id
@@ -30,14 +25,9 @@ public class DogzTemplet {
 /**
 	 * 名称
 	 */
-    private String name;
+    private final String name;
 
-	/**
-	 * 名称
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
+
 
 	/**
 	 * 名称
@@ -48,14 +38,9 @@ public class DogzTemplet {
 /**
 	 * 重量
 	 */
-    private int weight;
+    private final int weight;
 
-	/**
-	 * 重量
-	 */
-	public void setWeight(int weight) {
-		this.weight = weight;
-	}
+
 
 	/**
 	 * 重量
@@ -66,14 +51,9 @@ public class DogzTemplet {
 /**
 	 * 攻击力
 	 */
-    private int attack;
+    private final int attack;
 
-	/**
-	 * 攻击力
-	 */
-	public void setAttack(int attack) {
-		this.attack = attack;
-	}
+
 
 	/**
 	 * 攻击力
@@ -84,14 +64,9 @@ public class DogzTemplet {
 /**
 	 * 防御力
 	 */
-    private int defend;
+    private final int defend;
 
-	/**
-	 * 防御力
-	 */
-	public void setDefend(int defend) {
-		this.defend = defend;
-	}
+
 
 	/**
 	 * 防御力
@@ -102,14 +77,9 @@ public class DogzTemplet {
 /**
 	 * 每升一级增加的攻击力
 	 */
-    private int attackStep;
+    private final int attackStep;
 
-	/**
-	 * 每升一级增加的攻击力
-	 */
-	public void setAttackStep(int attackStep) {
-		this.attackStep = attackStep;
-	}
+
 
 	/**
 	 * 每升一级增加的攻击力
@@ -133,4 +103,9 @@ attackStep = Integer.parseInt( element.getChildText("attackStep").trim() );
 	public String toString() {
 		return "DogzTemplet [id = " + id + ",name = " + name + ",weight = " + weight + ",attack = " + attack + ",defend = " + defend + ",attackStep = " + attackStep + "]";
 	}
+
+	/*自定义代码开始*/
+    private int skillId = 90;
+    public int hp = 100;
+	/*自定义代码结束*/
 }

@@ -1,9 +1,6 @@
 package util;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,6 +12,7 @@ import java.io.IOException;
 public class Util {
     /**
      * 将第一个字符转换成大写
+     *
      * @param src
      * @return
      */
@@ -22,8 +20,37 @@ public class Util {
         return src.replaceFirst(src.substring(0, 1), src.substring(0, 1).toUpperCase());
     }
 
-    public static String firstToLowCase( String src ) {
-        return src.replaceFirst(src.substring(0, 1), src.substring(0, 1).toLowerCase() );
+    public static String firstToLowCase(String src) {
+        return src.replaceFirst(src.substring(0, 1), src.substring(0, 1).toLowerCase());
+    }
+
+    public static boolean isExist(String path) {
+        return (new File(path).exists());
+    }
+
+    public static String readFile(String path) {
+        StringBuilder sb = new StringBuilder();
+        String data;
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(path));
+            while ((data = reader.readLine()) != null) {
+                sb.append(data);
+                sb.append(System.getProperty("line.separator"));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return sb.toString();
     }
 
     public static void writeFile(String path, String content) {
@@ -57,6 +84,7 @@ public class Util {
 //        FileWriter fw = null;
         //String path = D.SRC_DIR + D.CFG_DIR + packageName + "\\" + className + ".java";
         //System.out.println("real is " + path);
+
         try {
             File f = new File(path);
             if (!f.exists()) {

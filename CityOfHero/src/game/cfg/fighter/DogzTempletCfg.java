@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * 模版配置
  * @author liukun
- * 2013-11-8 18:30:29
+ * 2013-11-11 17:36:36
  */
 public class DogzTempletCfg {
 	private static final Map<Integer,DogzTemplet> dogzTemplets = new HashMap<Integer, DogzTemplet>();
@@ -65,7 +65,9 @@ public class DogzTempletCfg {
 	public static void main(String[] args) {
 
 		int id = 101101;
-		System.out.println( getDogzTempletById( 1 ) );
+		System.out.println( getDogzTempletById( id ) );
 	}
+
+	/*自定义代码开始*//*自定义代码结束*/
 
 }

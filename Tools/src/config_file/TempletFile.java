@@ -1,9 +1,6 @@
 package config_file;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import util.Util;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,39 +18,18 @@ public class TempletFile {
     }
 
     public String getTempletStr() {
-        StringBuilder sb = new StringBuilder();
-        String data;
-        BufferedReader reader = null;
-        try{
-            reader = new BufferedReader(new FileReader( templetPath ) );
-            while( (data = reader.readLine() ) != null ) {
-                sb.append( data );
-                sb.append(System.getProperty( "line.separator" ) );
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return sb.toString();
+
+        return Util.readFile(templetPath);
     }
 
     public static void main(String[] args) {
         String file = "xTemplet.txt";
-        TempletFile t = new TempletFile( file );
-        System.out.println( t.getTempletStr() );
+        TempletFile t = new TempletFile(file);
+        System.out.println(t.getTempletStr());
 
         String a = "fsafa#adfds";
-        a = a.replace( "#a", "xxxxx" );
-        System.out.println( a );
+        a = a.replace("#a", "xxxxx");
+        System.out.println(a);
     }
 
 }

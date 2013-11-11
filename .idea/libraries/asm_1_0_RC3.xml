@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="asm-1.0-RC3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/CityOfHero/lib/asm-1.0-RC3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CityOfHero/lib/asm-3.3.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

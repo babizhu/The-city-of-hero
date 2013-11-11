@@ -19,4 +19,6 @@ public class #className# {
 	public String toString() {
 		return "#className# [#toString# + "]";
 	}
+
+	/*自定义代码开始*/$manualWork$/*自定义代码结束*/
 }

@@ -1,14 +1,9 @@
 /**
 	 * #annotation#
 	 */
-    private #fieldType# #field#;
+    private final #fieldType# #field#;
 
-	/**
-	 * #annotation#
-	 */
-	public void set#methodName#(#fieldType# #field#) {
-		this.#field# = #field#;
-	}
+
 
 	/**
 	 * #annotation#
