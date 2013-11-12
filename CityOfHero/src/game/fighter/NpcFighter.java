@@ -19,6 +19,4 @@ public class NpcFighter extends FighterBase {
 		setCritMultiple( templet.critMultiple );
 		setSpeed( templet.speed );
 	}
-	
-	
 }

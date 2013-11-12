@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * 模版配置
  * @author liukun
- * 2013-11-11 17:36:36
+ * 2013-11-12 17:51:49
  */
 public class DogzTempletCfg {
 	private static final Map<Integer,DogzTemplet> dogzTemplets = new HashMap<Integer, DogzTemplet>();
@@ -34,13 +34,13 @@ public class DogzTempletCfg {
 		try {
 			document = builder.build( FILE );
 			Element root = document.getRootElement();
-			List<?> list = root.getChildren( "npc" );
+			List<?> list = root.getChildren( "dogz" );
 
 			for (Object o : list) {
 				DogzTemplet templet = new DogzTemplet( (Element) o );
 				DogzTemplet temp = dogzTemplets.put( templet.getId(), templet );
 				if( temp != null ){
-					throw new RuntimeException( "DogzTemplet" + temp.getId() + "重复了" );
+					throw new RuntimeException( "DogzTemplet id [" + temp.getId() + "] 重复了" );
 				}
 
 			}
@@ -50,7 +50,7 @@ public class DogzTempletCfg {
 			e.printStackTrace();
 		}
 
-		System.out.println( "DogzTemplet 配置文件解析完毕" );
+		System.out.println( "DogzTemplet xml配置文件解析完毕" );
 	}
 
 
@@ -62,12 +62,12 @@ public class DogzTempletCfg {
 	public static DogzTemplet getDogzTempletById( int templetId ){
 		return dogzTemplets.get( templetId );
 	}
-	public static void main(String[] args) {
-
-		int id = 101101;
-		System.out.println( getDogzTempletById( id ) );
-	}
 
 	/*自定义代码开始*//*自定义代码结束*/
 
+	public static void main(String[] args) {
+
+		int id = 1;
+		System.out.println( getDogzTempletById( id ) );
+	}
 }

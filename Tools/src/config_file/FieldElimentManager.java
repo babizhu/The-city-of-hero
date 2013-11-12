@@ -5,7 +5,6 @@ package config_file;
  * User: Administrator
  * Date: 13-11-8
  * Time: 下午4:54
- * To change this template use File | Settings | File Templates.
  */
 
 import org.apache.poi.ss.usermodel.Sheet;
@@ -21,8 +20,19 @@ class FieldElement{
     String      announce;//field的注释
     String      name;
     String      type;
+    boolean     hasClient;
+
+    @Override
+    public String toString() {
+        return "FieldElement{" +
+                "announce='" + announce + '\'' +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", hasClient=" + hasClient +
+                '}';
+    }
 }
-public class FieldElimentManager {
+class FieldElimentManager {
 
     private final Sheet sheet;
 
@@ -43,9 +53,11 @@ public class FieldElimentManager {
         for( int col = 0; col < maxCol; col++ ) {
             FieldElement fe = new FieldElement();
             fe.announce = sheet.getRow( 0 ).getCell( col ).toString();
-            fe.type = sheet.getRow( 1 ).getCell( col ).toString();
-            fe.name = sheet.getRow( 2 ).getCell( col ).toString();
+            fe.hasClient = Boolean.parseBoolean( sheet.getRow( 1 ).getCell( col ).toString() );
+            fe.type = sheet.getRow( 2 ).getCell( col ).toString();
+            fe.name = sheet.getRow( 3 ).getCell( col ).toString();
             fields.add( fe );
+            //System.out.println( fe );
         }
     }
 }

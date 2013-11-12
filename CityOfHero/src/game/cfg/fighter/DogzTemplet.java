@@ -5,7 +5,7 @@ import org.jdom2.Element;
 /**
  * 模版
  * @author liukun
- * 2013-11-11 17:36:36
+ * 2013-11-12 17:51:49
  */
 public class DogzTemplet {
 
@@ -104,8 +104,5 @@ attackStep = Integer.parseInt( element.getChildText("attackStep").trim() );
 		return "DogzTemplet [id = " + id + ",name = " + name + ",weight = " + weight + ",attack = " + attack + ",defend = " + defend + ",attackStep = " + attackStep + "]";
 	}
 
-	/*自定义代码开始*/
-    private int skillId = 90;
-    public int hp = 100;
-	/*自定义代码结束*/
+	/*自定义代码开始*//*自定义代码结束*/
 }

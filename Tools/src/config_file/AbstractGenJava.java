@@ -5,7 +5,7 @@ import util.D;
 import util.Util;
 
 
-public abstract class AbstractGenJava {
+abstract class AbstractGenJava {
 
 
     /**

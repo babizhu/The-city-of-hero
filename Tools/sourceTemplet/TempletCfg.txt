@@ -34,13 +34,13 @@ public class #className# {
 		try {
 			document = builder.build( FILE );
 			Element root = document.getRootElement();
-			List<?> list = root.getChildren( "npc" );
+			List<?> list = root.getChildren( "#xmlNode#" );
 
 			for (Object o : list) {
 				#templetClassName# templet = new #templetClassName#( (Element) o );
 				#templetClassName# temp = #mapName#s.put( templet.getId(), templet );
 				if( temp != null ){
-					throw new RuntimeException( "#templetClassName#" + temp.getId() + "重复了" );
+					throw new RuntimeException( "#templetClassName# id [" + temp.getId() + "] 重复了" );
 				}
 
 			}
@@ -50,7 +50,7 @@ public class #className# {
 			e.printStackTrace();
 		}
 
-		System.out.println( "#templetClassName# 配置文件解析完毕" );
+		System.out.println( "#templetClassName# xml配置文件解析完毕" );
 	}
 
 
@@ -62,12 +62,12 @@ public class #className# {
 	public static #templetClassName# get#templetClassName#ById( int templetId ){
 		return #mapName#s.get( templetId );
 	}
-	public static void main(String[] args) {
-
-		int id = 101101;
-		System.out.println( get#templetClassName#ById( id ) );
-	}
 
 	/*自定义代码开始*/$manualWork$/*自定义代码结束*/
 
+	public static void main(String[] args) {
+
+		int id = 1;
+		System.out.println( get#templetClassName#ById( id ) );
+	}
 }

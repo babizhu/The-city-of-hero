@@ -7,17 +7,16 @@ import java.io.*;
  * User: Administrator
  * Date: 13-11-5
  * Time: 下午6:24
- * To change this template use File | Settings | File Templates.
  */
 public class Util {
     /**
      * 将第一个字符转换成大写
      *
-     * @param src
-     * @return
+     * @param str   源字符串
+     * @return      转换后的字符串
      */
-    public static final String firstToUpperCase(String src) {
-        return src.replaceFirst(src.substring(0, 1), src.substring(0, 1).toUpperCase());
+    public static String firstToUpperCase(String str) {
+        return str.replaceFirst(str.substring(0, 1), str.substring(0, 1).toUpperCase());
     }
 
     public static String firstToLowCase(String src) {
@@ -39,7 +38,7 @@ public class Util {
                 sb.append(System.getProperty("line.separator"));
             }
         } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
 
         } finally {
             try {
@@ -105,7 +104,7 @@ public class Util {
                 assert out != null;
                 out.close();
             } catch (IOException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                e.printStackTrace();
             }
         }
     }

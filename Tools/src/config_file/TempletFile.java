@@ -1,5 +1,6 @@
 package config_file;
 
+import util.D;
 import util.Util;
 
 /**
@@ -7,14 +8,12 @@ import util.Util;
  * User: Administrator
  * Date: 13-11-5
  * Time: 下午5:30
- * To change this template use File | Settings | File Templates.
  */
-public class TempletFile {
-    private final String PATH = "D:\\work\\The-city-of-hero\\Tools\\source_templet\\";
+class TempletFile {
     private final String templetPath;
 
     public TempletFile(String templetPath) {
-        this.templetPath = PATH + templetPath;
+        this.templetPath = D.JAVA_CLASS_TEMPLET_DIR + templetPath;
     }
 
     public String getTempletStr() {

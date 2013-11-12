@@ -18,7 +18,7 @@ import java.util.List;
 
 
 
-public class GenJavaSource extends AbstractGenJava {
+class GenJavaSource extends AbstractGenJava {
 
     private List<FieldElement> fields;
 

@@ -15,9 +15,10 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 
-public class GenJavaSource1 extends AbstractGenJava{
+class GenJavaSource1 extends AbstractGenJava{
 
     private final String templetClass;
+    private final String xmlNode;
 
     /**
      * @param path  仅包括包名和类名
@@ -27,6 +28,7 @@ public class GenJavaSource1 extends AbstractGenJava{
         super(path, sheet);
         int pos = className.indexOf( "Cfg" );
         templetClass = className.substring( 0, pos );
+        xmlNode = path[1];
     }
 
     @Override
@@ -50,6 +52,7 @@ public class GenJavaSource1 extends AbstractGenJava{
                 replace( D.TEPMLET_CLASS_NAME_TAG, templetClass ).
                 replace( D.XML_PATH_TAG, xmlPath ).
                 replace( D.MAP_NAME_TAG, Util.firstToLowCase( templetClass ) ).
+                replace( D.XMl_NODE_TAG, xmlNode ).
                 replace( D.PACAKAGE_NAME_TAG, packageInFile );
 
     }

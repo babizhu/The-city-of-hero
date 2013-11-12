@@ -12,9 +12,9 @@ import java.util.List;
  * User: Administrator
  * Date: 13-11-5
  * Time: 下午4:32
- * To change this template use File | Settings | File Templates.
  */
-public class GenXml {
+class GenXml {
+
     private final List<FieldElement> fields;
     private final String className;
     private final String packageName;
@@ -28,23 +28,30 @@ public class GenXml {
     }
 
     void generate() {
+
         StringBuilder sb = new StringBuilder( "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>" );
-        sb.append( "<" + className + "s" + ">" );
+        sb.append("<").append(className).append("s").append(">");
         for( Row row : sheet ){
-            if( row.getRowNum() < 3 ){
+            if( row.getRowNum() < D.EXCEL_HEAD_COUNT ){
                 continue;
             }
-            sb.append( "<" + className + ">" );
-            sb.append( genContent(row) );
-            sb.append( "</" + className + ">" );
+            sb.append("<").append(className).append(">").
+                    append(genContent(row)).append("</").append(className).append(">");
         }
-        sb.append( "</" + className + "s" + ">" );
-        System.out.println( sb.toString() );
+        sb.append("</").append(className).append("s").append(">");
+        //System.out.println( sb.toString() );
 
-        String path = D.XML_RESOURCE_DIR + packageName + "/" + className + ".xml";
-        System.out.println( path );
-
+        String path = D.XML_RESOURCE_DIR + packageName + "/" + Util.firstToLowCase( className ) + ".xml";
         Util.writeFile( path, sb.toString() );
+//        06911523
+//
+//                主险保单号  51021173898000019940
+//                保单号      51021103698000018283
+//                投保单号     06911523
+//                           512221441214002x
+//
+//                95519  1.2.8
+
 
     }
 
@@ -53,8 +60,16 @@ public class GenXml {
         int i = 0;
         for( FieldElement element : fields ){
             sb.append( "<" ).append( element.name ).append( ">" );
+            String data = row.getCell(i++).toString();
+            if( element.type.equals( "int" ) ){
+                int pointPos = data.indexOf( '.' );
+                if( pointPos != -1 ){
+                    data = data.substring( 0, pointPos );//去掉末尾的.0
+                }
+            }
 
-            sb.append( row.getCell(i++) );
+            //System.out.println( row.getCell(i++) );
+            sb.append( data );
             sb.append( "</" ).append( element.name ).append( ">" );
 
         }
